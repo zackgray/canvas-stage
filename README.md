@@ -7,6 +7,11 @@ Layout-To-Render LoRA then turns the clay into footage, using an approved still 
 world hold from every angle because they are geometry, not a new generation per shot. Lightricks built the renderer; this
 app is the set it films and the operator who films it.
 
+![Left: the grey clay take the operator filmed in the browser. Right: the same take rendered with LTX-2.5 and Layout-To-Render.](docs/images/clay-vs-render.jpg)
+
+*Left, the clay take filmed in the browser; right, the same take rendered. Four shots from the demo: walk-up, helmet close-up,
+wheel burnout, aerial straight.*
+
 Entry for Comfy's "Open Source Higgsfield" contest. **All footage made with Canvas Stage is AI-generated.**
 Every model the app uses is open weights; there are no partner (closed API) nodes and no hosted LLM.
 
