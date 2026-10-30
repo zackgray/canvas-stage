@@ -12,6 +12,8 @@ app is the set it films and the operator who films it.
 *Left, the clay take filmed in the browser; right, the same take rendered. Four shots from the demo: walk-up, helmet close-up,
 wheel burnout, aerial straight.*
 
+**▶ [Watch the demo video](https://www.youtube.com/watch?v=7GTeOBjMs6U)**: the finished shots, then a walkthrough of the app.
+
 Entry for Comfy's "Open Source Higgsfield" contest. **All footage made with Canvas Stage is AI-generated.**
 Every model the app uses is open weights; there are no partner (closed API) nodes and no hosted LLM.
 
