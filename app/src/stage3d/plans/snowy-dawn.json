@@ -1,0 +1,19 @@
+{
+  "sentence": "A snowy field at dawn: a low bank, two bare trees, a far wood and rocks under the snow; a person walks toward us.",
+  "seed": 45,
+  "flat": [-3, -16, 3, 8],
+  "groundShade": 0.85,
+  "puddles": 0,
+  "tufts": 0,
+  "fog": { "color": "#d4d8de", "density": 0.016 },
+  "light": { "fill": 1.6, "key": 0.8, "keyDir": [100, 6] },
+  "sky": { "url": "/lab-assets/sky/procedural" },
+  "kit": [
+    { "kind": "treeline", "args": [170, 15, 9], "at": [0, -60] },
+    { "kind": "mound", "args": [36, 5, 0.7], "at": [0, -36], "yawDeg": 3 },
+    { "kind": "deadTree", "args": [8, 6.5], "at": [-8, -22] },
+    { "kind": "deadTree", "args": [9, 5], "at": [10, -28] },
+    { "kind": "rock", "args": [21, 0.8], "at": [-5, -13] },
+    { "kind": "rock", "args": [22, 1.1], "at": [7, -18] }
+  ]
+}

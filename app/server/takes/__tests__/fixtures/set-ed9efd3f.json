@@ -1,0 +1,219 @@
+{
+  "sentence": "A small apple orchard on a hillside in late afternoon. Old gnarled apple trees in loose rows, long uncut grass between them, a few white wooden beehives set in the grass near the middle of the clearing. A low stone wall and a wooden gate at the edge of the field. Distant rolling hills and soft haze behind. Early autumn, warm low sun. Golden hour, about an hour before sunset. tina is in the scene.",
+  "seed": 1057,
+  "flat": [
+    -3,
+    -16,
+    3,
+    8
+  ],
+  "groundShade": 0.4,
+  "puddles": 5,
+  "tufts": 0,
+  "fog": {
+    "color": "#b4b8bd",
+    "density": 0.012
+  },
+  "light": {
+    "fill": 1.4,
+    "key": 1.1,
+    "keyDir": [
+      270,
+      12
+    ]
+  },
+  "sky": {
+    "url": "/lab-assets/sky/procedural",
+    "yawDeg": 90,
+    "horizonLiftDeg": 1.2,
+    "gain": 1.1,
+    "cutDeg": 12,
+    "band": [
+      0.31,
+      0.9
+    ]
+  },
+  "kit": [
+    {
+      "kind": "tree",
+      "at": [
+        -2.56,
+        -18.4
+      ],
+      "args": [
+        10,
+        6,
+        4
+      ],
+      "yawDeg": 0,
+      "label": "gnarled apple tree",
+      "scale": 0.72
+    },
+    {
+      "kind": "tree",
+      "at": [
+        5.67,
+        -20
+      ],
+      "args": [
+        9,
+        5,
+        3
+      ],
+      "yawDeg": 0,
+      "label": "gnarled apple tree",
+      "scale": 0.95
+    },
+    {
+      "kind": "tree",
+      "at": [
+        -0.88,
+        -22.33
+      ],
+      "args": [
+        11,
+        7,
+        5
+      ],
+      "yawDeg": 0,
+      "label": "gnarled apple tree",
+      "scale": 0.73
+    },
+    {
+      "kind": "tree",
+      "at": [
+        20,
+        -30
+      ],
+      "args": [
+        8,
+        4,
+        2
+      ],
+      "yawDeg": 0,
+      "label": "gnarled apple tree"
+    },
+    {
+      "kind": "tree",
+      "at": [
+        4.9,
+        -45
+      ],
+      "args": [
+        10,
+        6,
+        4
+      ],
+      "yawDeg": 0,
+      "label": "gnarled apple tree"
+    },
+    {
+      "kind": "tree",
+      "at": [
+        2.02,
+        -21.33
+      ],
+      "args": [
+        9,
+        5,
+        3
+      ],
+      "yawDeg": 62,
+      "label": "gnarled apple tree"
+    },
+    {
+      "kind": "mound",
+      "at": [
+        0,
+        -60
+      ],
+      "args": [
+        40,
+        12,
+        0.8
+      ],
+      "label": "distant rolling hills"
+    },
+    {
+      "kind": "fence",
+      "at": [
+        -32,
+        -10
+      ],
+      "args": [
+        30,
+        12,
+        0.6
+      ],
+      "yawDeg": 0,
+      "label": "low stone wall"
+    },
+    {
+      "kind": "fence",
+      "at": [
+        -30,
+        -10
+      ],
+      "args": [
+        6,
+        12,
+        0.6
+      ],
+      "yawDeg": 90,
+      "label": "wooden gate"
+    },
+    {
+      "kind": "hive",
+      "at": [
+        0.32,
+        -11.73
+      ],
+      "pieceTag": "prop:hive",
+      "glb": {
+        "url": "/lab-assets/locations/loc-2026-10-27T02-28-53-472/pieces/hive/p-20261027022920-4r3t/mesh.glb",
+        "massingUrl": "/lab-assets/locations/loc-2026-10-27T02-28-53-472/pieces/hive/p-20261027022920-4r3t/massing.glb",
+        "yawOffsetDeg": 90,
+        "unitScale": 2.0017
+      },
+      "yawDeg": -31,
+      "scale": 0.53,
+      "lift": -0.05
+    },
+    {
+      "kind": "tree",
+      "args": [
+        10,
+        6,
+        4
+      ],
+      "label": "gnarled apple tree",
+      "at": [
+        14.21,
+        -51.4
+      ],
+      "yawDeg": 44
+    },
+    {
+      "kind": "tree",
+      "args": [
+        9,
+        5,
+        3
+      ],
+      "label": "gnarled apple tree",
+      "at": [
+        3.81,
+        -13.25
+      ],
+      "yawDeg": -50,
+      "scale": 0.71
+    }
+  ],
+  "mark": {
+    "at": [
+      0.6,
+      -12.39
+    ],
+    "yawDeg": -50.5
+  }
+}

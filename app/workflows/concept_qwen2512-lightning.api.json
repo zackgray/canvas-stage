@@ -1,0 +1,171 @@
+{
+ "unet": {
+  "class_type": "UNETLoader",
+  "inputs": {
+   "unet_name": "qwen_image_2512_fp8_e4m3fn.safetensors",
+   "weight_dtype": "default"
+  }
+ },
+ "clip": {
+  "class_type": "CLIPLoader",
+  "inputs": {
+   "clip_name": "qwen_2.5_vl_7b_fp8_scaled.safetensors",
+   "type": "qwen_image"
+  }
+ },
+ "vae": {
+  "class_type": "VAELoader",
+  "inputs": {
+   "vae_name": "qwen_image_vae.safetensors"
+  }
+ },
+ "pos": {
+  "class_type": "CLIPTextEncode",
+  "inputs": {
+   "clip": [
+    "clip",
+    0
+   ],
+   "text": "<concept prompt>"
+  }
+ },
+ "neg": {
+  "class_type": "CLIPTextEncode",
+  "inputs": {
+   "clip": [
+    "clip",
+    0
+   ],
+   "text": "低分辨率，低画质，肢体畸形，手指畸形，画面过饱和，蜡像感，人脸无细节，过度光滑，画面具有AI感。构图混乱。文字模糊，扭曲"
+  }
+ },
+ "lat": {
+  "class_type": "EmptySD3LatentImage",
+  "inputs": {
+   "width": 1664,
+   "height": 928,
+   "batch_size": 1
+  }
+ },
+ "lora": {
+  "class_type": "LoraLoaderModelOnly",
+  "inputs": {
+   "model": [
+    "unet",
+    0
+   ],
+   "lora_name": "Qwen-Image-2512-Lightning-4steps-V1.0-fp32.safetensors",
+   "strength_model": 1
+  }
+ },
+ "ms": {
+  "class_type": "ModelSamplingAuraFlow",
+  "inputs": {
+   "model": [
+    "lora",
+    0
+   ],
+   "shift": 3.1
+  }
+ },
+ "k0": {
+  "class_type": "KSampler",
+  "inputs": {
+   "model": [
+    "ms",
+    0
+   ],
+   "positive": [
+    "pos",
+    0
+   ],
+   "negative": [
+    "neg",
+    0
+   ],
+   "latent_image": [
+    "lat",
+    0
+   ],
+   "seed": 1,
+   "steps": 4,
+   "cfg": 1,
+   "sampler_name": "euler",
+   "scheduler": "simple",
+   "denoise": 1
+  }
+ },
+ "v0": {
+  "class_type": "VAEDecode",
+  "inputs": {
+   "samples": [
+    "k0",
+    0
+   ],
+   "vae": [
+    "vae",
+    0
+   ]
+  }
+ },
+ "s0": {
+  "class_type": "SaveImage",
+  "inputs": {
+   "images": [
+    "v0",
+    0
+   ],
+   "filename_prefix": "canvas-stage/concept-location-1"
+  }
+ },
+ "k1": {
+  "class_type": "KSampler",
+  "inputs": {
+   "model": [
+    "ms",
+    0
+   ],
+   "positive": [
+    "pos",
+    0
+   ],
+   "negative": [
+    "neg",
+    0
+   ],
+   "latent_image": [
+    "lat",
+    0
+   ],
+   "seed": 7920,
+   "steps": 4,
+   "cfg": 1,
+   "sampler_name": "euler",
+   "scheduler": "simple",
+   "denoise": 1
+  }
+ },
+ "v1": {
+  "class_type": "VAEDecode",
+  "inputs": {
+   "samples": [
+    "k1",
+    0
+   ],
+   "vae": [
+    "vae",
+    0
+   ]
+  }
+ },
+ "s1": {
+  "class_type": "SaveImage",
+  "inputs": {
+   "images": [
+    "v1",
+    0
+   ],
+   "filename_prefix": "canvas-stage/concept-location-7920"
+  }
+ }
+}

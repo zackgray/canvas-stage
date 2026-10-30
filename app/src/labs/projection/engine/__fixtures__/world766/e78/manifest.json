@@ -1,0 +1,63 @@
+{
+ "id": "e78-soldier",
+ "label": "E78 soldier (placed: feet on the 766 world floor, k = 1.431)",
+ "locationId": "loc-2026-10-21T20-27-13-766",
+ "fps": 24,
+ "frames": 97,
+ "width": 960,
+ "height": 544,
+ "source": {
+  "vfovDeg": 56.02105846083424,
+  "aspect": 1.7647058823529411,
+  "position": [
+   0,
+   1.6,
+   0
+  ],
+  "quaternion": [
+   -0.03742118458536296,
+   0,
+   0,
+   0.9992995821795525
+  ]
+ },
+ "depth": {
+  "encoding": "planar-metres-16bit",
+  "metersPerUnit": 8.679777088901621e-05
+ },
+ "files": {
+  "color": "frames/color_%03d.png",
+  "depth": "frames/depth_%03d.png",
+  "mask": "frames/mask_%03d.png"
+ },
+ "sourceClip": "source.mp4",
+ "background": "background.png",
+ "backgroundDepth": {
+  "file": "background_depth.png",
+  "metersPerUnit": 0.002623964791222605
+ },
+ "prompt": "A lone soldier in dented steel armour and a torn surcoat walks slowly toward the camera through drifting smoke on a muddy medieval battlefield at dusk, glancing around at the burning wooden palisade; broken spears and fallen banners lie in the mud. Firelight flickers orange on the smoke and on his armour, a low orange sun glows through the haze under a deep blue sky with dark clouds, the ground dark and in shadow. The camera is locked at one spot, level, no zoom, no pan; only the soldier, the smoke and the flames move. Real footage, natural colour, 35mm lens, deep focus, steady exposure.",
+ "pin": {
+  "k": 1.43071,
+  "frames": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15
+  ],
+  "residualCm": 6.77,
+  "rawMetersPerUnit": 6.066762019487962e-05
+ }
+}

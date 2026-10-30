@@ -1,0 +1,100 @@
+{
+  "seed": 1,
+  "sky": {
+    "url": "/lab-assets/sky/procedural"
+  },
+  "kit": [
+    {
+      "kind": "car2",
+      "at": [
+        -3.26,
+        -8.06
+      ],
+      "pieceTag": "prop:car2",
+      "glb": {
+        "url": "/lab-assets/locations/loc-2026-10-29T17-39-23-056/pieces/car2/p-20261029195833-p2bt/mesh.glb",
+        "massingUrl": "/lab-assets/locations/loc-2026-10-29T17-39-23-056/pieces/car2/p-20261029195833-p2bt/massing.glb",
+        "yawOffsetDeg": 60,
+        "unitScale": 2.0005
+      },
+      "label": "car2",
+      "yawDeg": 30,
+      "scale": 2.19
+    },
+    {
+      "kind": "grandstand",
+      "at": [
+        -3.84,
+        -28.44
+      ],
+      "pieceTag": "prop:grandstand",
+      "glb": {
+        "url": "/lab-assets/locations/loc-2026-10-29T17-39-23-056/pieces/grandstand/p-20261029211629-157z/mesh.glb",
+        "massingUrl": "/lab-assets/locations/loc-2026-10-29T17-39-23-056/pieces/grandstand/p-20261029211629-157z/massing.glb",
+        "yawOffsetDeg": 90,
+        "unitScale": 1.9989
+      },
+      "label": "grandstand",
+      "yawDeg": -100,
+      "scale": 9.03
+    },
+    {
+      "kind": "grandstand",
+      "glb": {
+        "url": "/lab-assets/locations/loc-2026-10-29T17-39-23-056/pieces/grandstand/p-20261029211629-157z/mesh.glb",
+        "massingUrl": "/lab-assets/locations/loc-2026-10-29T17-39-23-056/pieces/grandstand/p-20261029211629-157z/massing.glb",
+        "yawOffsetDeg": 90,
+        "unitScale": 1.9989
+      },
+      "label": "grandstand",
+      "at": [
+        -21.22,
+        -31.23
+      ],
+      "yawDeg": -100,
+      "scale": 9.03,
+      "lift": -0.67
+    },
+    {
+      "kind": "grandstand",
+      "glb": {
+        "url": "/lab-assets/locations/loc-2026-10-29T17-39-23-056/pieces/grandstand/p-20261029211629-157z/mesh.glb",
+        "massingUrl": "/lab-assets/locations/loc-2026-10-29T17-39-23-056/pieces/grandstand/p-20261029211629-157z/massing.glb",
+        "yawOffsetDeg": 90,
+        "unitScale": 1.9989
+      },
+      "label": "grandstand",
+      "lift": -0.67,
+      "at": [
+        -37.43,
+        -34.22
+      ],
+      "yawDeg": -100,
+      "scale": 9.03
+    },
+    {
+      "kind": "grandstand",
+      "glb": {
+        "url": "/lab-assets/locations/loc-2026-10-29T17-39-23-056/pieces/grandstand/p-20261029211629-157z/mesh.glb",
+        "massingUrl": "/lab-assets/locations/loc-2026-10-29T17-39-23-056/pieces/grandstand/p-20261029211629-157z/massing.glb",
+        "yawOffsetDeg": 90,
+        "unitScale": 1.9989
+      },
+      "label": "grandstand",
+      "lift": -0.67,
+      "at": [
+        -54.74,
+        -36.98
+      ],
+      "yawDeg": -100,
+      "scale": 9.03
+    }
+  ],
+  "mark": {
+    "at": [
+      -3.73,
+      -13.58
+    ],
+    "yawDeg": -41
+  }
+}

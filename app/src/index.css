@@ -1,0 +1,15 @@
+:root {
+  font-family: system-ui, sans-serif;
+  color: #e8e8e8;
+  background: #111;
+  /* the browser paints every native control dark from this: select dropdowns and their option lists,
+     date and number spinners, scrollbars (native-dropdowns-dark). Without it the OS draws them light. */
+  color-scheme: dark;
+}
+html, body, #root { margin: 0; height: 100%; }
+a { color: #8ab4ff; }
+.lab-index, .lab-loading { padding: 2rem; }
+/* native option lists follow the OS popup on Windows, so pin their colours too (styled .st-select options
+   already set their own; these cover every bare select) */
+option { background-color: #1c1824; color: #e9e7ee; }
+option:disabled { color: #706b80; }

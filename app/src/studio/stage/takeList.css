@@ -1,0 +1,24 @@
+/* The take list (TakeList.tsx): its own line in the draw bar, under the transport; one compact chip per take, scrolling sideways when
+   there are many. The take words box (TakeWords.tsx) sits in the words drawer, above the scene's words. */
+.st-drawbar:has(.st-takelist) { flex-wrap: wrap; row-gap: 6px; }
+.st-takelist { flex-basis: 100%; display: flex; align-items: center; gap: 8px; min-width: 0; overflow-x: auto; font-size: 12px; }
+.st-takelist-label { flex: none; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--st-fg3); }
+.st-takerow { flex: none; display: inline-flex; align-items: center; gap: 6px; padding: 2px 6px 2px 2px; border: 1px solid var(--st-line2);
+  border-radius: var(--st-r); color: var(--st-fg2); }
+.st-takerow-on { border-color: var(--st-accent-line); color: var(--st-fg); }
+.st-takerow-pick { display: inline-flex; align-items: center; gap: 6px; padding: 0; background: none; border: 0; font: inherit; color: inherit; cursor: pointer; }
+.st-takerow-pick:disabled { cursor: default; opacity: 0.6; }
+.st-takerow-thumb { display: inline-block; width: 40px; height: 22px; object-fit: cover; border-radius: 4px; background: var(--st-line); }
+.st-takerow-name { max-width: 18ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.st-takerow-state { font-size: 11px; color: var(--st-fg3); }
+.st-takerow-input { width: 16ch; font: inherit; }
+.st-takelist .st-link { font-size: 12px; }
+.st-takelist .st-warn { margin: 0; }
+/* the take's own words, in the drawer */
+.st-takewords { flex-basis: 100%; display: flex; flex-direction: column; gap: 4px; }
+.st-takewords-box { position: relative; }
+.st-takewords textarea { display: block; width: 100%; box-sizing: border-box; min-height: 6.5em; max-height: 30vh; resize: vertical; font: inherit; font-size: 15px; line-height: 1.6; }
+.st-takewords .sd-ac, .st-takewords .sd-pop { top: auto; bottom: calc(100% + 6px); }
+.st-takewords-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 12px; color: var(--st-fg3); }
+.st-takewords-row select { font: inherit; font-size: 12px; max-width: 32ch; }
+.st-takerow-relock { font-size: 11px; color: var(--st-warn, var(--st-fg3)); white-space: nowrap; }

@@ -1,0 +1,49 @@
+/* Studio primitives (src/studio/ui). Class names are part of the frozen surface: screens may add classes, not restyle these. */
+.st-field { display: grid; gap: 4px; margin: 10px 0; color: var(--st-fg2); font-size: 12px; }
+.st-field-hint { color: var(--st-fg3); font-size: 11px; }
+.st-input, .st-select {
+  width: 100%; min-height: var(--st-h); padding: 5px 9px; font: inherit; color: var(--st-fg);
+  background: var(--st-grad-input); box-shadow: var(--st-shadow-input); border: 1px solid var(--st-line2); border-radius: var(--st-r); outline: none;
+}
+.st-select option { background: var(--st-panel2); color: var(--st-fg); }
+textarea.st-input { resize: vertical; line-height: 1.4; }
+.st-input:focus, .st-select:focus { border-color: var(--st-blue); }
+.st-input:disabled, .st-select:disabled { opacity: 0.5; }
+.st-toggle { display: flex; align-items: center; gap: 8px; margin: 10px 0; color: var(--st-fg2); font-size: 12px; cursor: pointer; }
+.st-toggle input { accent-color: var(--st-accent); width: 14px; height: 14px; margin: 0; }
+
+.st-pricebtn { display: inline-flex; align-items: center; gap: 10px; }
+.st-btn {
+  height: var(--st-h); padding: 0 14px; border-radius: var(--st-r); border: 1px solid var(--st-line2); font: inherit; color: var(--st-fg);
+  background: var(--st-grad-button); box-shadow: var(--st-shadow-button); cursor: pointer;
+}
+.st-btn:hover:not(:disabled) { background: var(--st-grad-button-hover); }
+.st-btn.st-primary { background: var(--st-grad-primary); border-color: #c58f3a; color: #1a1407; font-weight: 600; box-shadow: var(--st-shadow-primary); }
+.st-btn.st-primary:hover:not(:disabled) { background: var(--st-grad-primary-hover); }
+.st-btn:disabled { opacity: 0.45; cursor: default; }
+.st-price { color: var(--st-fg3); font-size: 12px; font-variant-numeric: tabular-nums; }
+
+.st-elapsed { margin-left: 8px; color: var(--st-fg3); font-size: 12px; font-variant-numeric: tabular-nums; }
+
+.st-progress { display: grid; gap: 4px; margin: 10px 0; }
+.st-progress-head { display: flex; justify-content: space-between; font-size: 12px; color: var(--st-fg2); }
+.st-progress-time { color: var(--st-fg3); font-variant-numeric: tabular-nums; }
+.st-progress-track { position: relative; height: 6px; background: var(--st-line); border-radius: 3px; overflow: hidden; }
+.st-progress-fill { position: absolute; left: 0; top: 0; bottom: 0; background: var(--st-grad-meter); border-radius: 3px; }
+.st-progress.st-indeterminate .st-progress-fill { width: 30%; animation: st-slide 1.4s ease-in-out infinite; }
+@keyframes st-slide { from { left: -30%; } to { left: 100%; } }
+
+.st-adv { margin-top: 18px; border-top: 1px solid var(--st-line); padding-top: 8px; }
+.st-adv > summary { cursor: pointer; color: var(--st-fg3); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; list-style: none; }
+.st-adv > summary::-webkit-details-marker { display: none; }
+.st-adv > summary::before { content: '▸ '; }
+.st-adv[open] > summary::before { content: '▾ '; }
+
+/* Ask: an inline "are you sure?" in place of the button that asked it */
+.st-ask { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 6px; font-size: 12px; color: var(--st-fg2); }
+.st-ask button { padding: 3px 11px; border-radius: 99px; border: 1px solid var(--st-line2); background: none; color: var(--st-fg); font-weight: 700; font-size: 12px; cursor: pointer; }
+
+/* RunPill: the paid button's place while its job runs */
+.st-runpill { display: grid; gap: 2px; min-width: 240px; padding: 6px 12px; border: 1px solid var(--st-line2); border-radius: var(--st-r); background: var(--st-grad-input); }
+.st-runpill .st-progress { margin: 0; }
+.st-runpill-note { display: flex; justify-content: space-between; gap: 12px; font-size: 11px; color: var(--st-fg3); }

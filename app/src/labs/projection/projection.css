@@ -1,0 +1,75 @@
+.pl-root {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  height: 100vh;
+  overflow: hidden;
+}
+.pl-viewport { position: relative; min-width: 0; min-height: 0; }
+.pl-viewport canvas { display: block; }
+.pl-panel {
+  overflow-y: auto;
+  padding: 12px 14px 24px;
+  background: #16171b;
+  border-left: 1px solid #2a2c33;
+  font-size: 13px;
+}
+.pl-panel h2 { font-size: 15px; margin: 0 0 8px; }
+.pl-panel h3 {
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
+  color: #8d93a3; margin: 14px 0 6px;
+}
+.pl-panel section { border-top: 1px solid #25272e; }
+.pl-panel select { width: 100%; background: #22242b; color: inherit; border: 1px solid #33363f; padding: 3px; }
+.pl-row { display: grid; gap: 4px; margin: 6px 0; }
+.pl-slider { display: grid; grid-template-columns: 92px 1fr 56px auto; align-items: center; gap: 6px; margin: 4px 0; }
+.pl-slider input[type='range'] { width: 100%; }
+.pl-slider-label { color: #c3c7d1; }
+.pl-num { width: 56px; background: #22242b; color: inherit; border: 1px solid #33363f; font-size: 12px; }
+.pl-unit { color: #8d93a3; font-size: 11px; }
+.pl-check { display: flex; gap: 6px; align-items: center; margin: 5px 0; }
+.pl-buttons { display: flex; flex-wrap: wrap; gap: 5px; margin: 5px 0; }
+.pl-buttons button {
+  background: #2b2e37; color: inherit; border: 1px solid #3b3f4a; border-radius: 3px; padding: 4px 8px; cursor: pointer;
+}
+.pl-buttons button:hover:not(:disabled) { background: #363a45; }
+.pl-buttons button:disabled { opacity: 0.5; cursor: default; }
+.pl-note { color: #8d93a3; font-size: 12px; margin: 5px 0; }
+.pl-prompt { display: -webkit-box; -webkit-line-clamp: 3; line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.pl-metric { font-variant-numeric: tabular-nums; margin: 4px 0; line-height: 1.5; }
+.pl-status { color: #b9c2d6; font-size: 12px; margin-top: 14px; word-break: break-word; }
+.pl-text {
+  width: 100%; box-sizing: border-box; background: #22242b; color: inherit; border: 1px solid #33363f;
+  padding: 3px 5px; font-size: 12px;
+}
+.pl-buttons .pl-primary { background: #2f4a6e; border-color: #44679a; }
+.pl-buttons .pl-primary:hover:not(:disabled) { background: #3a5a85; }
+.pl-inline { margin: 0 0 0 4px; font-size: 12px; }
+.pl-busy { color: #c9d4ea; }
+.pl-warn { color: #f2b84b; }
+.pl-strip { display: flex; gap: 6px; overflow-x: auto; padding: 4px 0; }
+.pl-shot { margin: 0; flex: 0 0 auto; width: 128px; }
+.pl-shot img { width: 128px; display: block; cursor: zoom-in; border: 1px solid #33363f; }
+.pl-shot figcaption { color: #8d93a3; font-size: 11px; line-height: 1.3; margin-top: 2px; }
+.pl-lightbox { position: fixed; inset: 0; background: #000d; display: flex; align-items: center; justify-content: center; cursor: zoom-out; z-index: 10; }
+.pl-lightbox img { max-width: 100vw; max-height: 100vh; }
+.pl-angle {
+  position: absolute; left: 10px; top: 10px; padding: 3px 8px; border-radius: 3px; pointer-events: none;
+  background: #16171bcc; color: #c3c7d1; font-size: 12px; font-variant-numeric: tabular-nums;
+}
+.pl-angle.pl-wide { color: #f2b84b; }
+.pl-angle-line { display: block; color: #8d93a3; font-size: 11px; }
+.pl-op-hud { position: absolute; inset: 0; pointer-events: none; }
+/* Orbit + Manual pivot: what C / R3 puts the pivot on */
+.pl-reticle { position: absolute; left: 50%; top: 50%; width: 18px; height: 18px; transform: translate(-50%, -50%); opacity: 0.55; }
+.pl-reticle::before, .pl-reticle::after { content: ''; position: absolute; background: #f2b84b; box-shadow: 0 0 2px #000; }
+.pl-reticle::before { left: 8px; top: 0; width: 2px; height: 18px; }
+.pl-reticle::after { top: 8px; left: 0; width: 18px; height: 2px; }
+.pl-op-hud .cl-hud-top { top: 40px; }
+/* the REC line sits under the rig / lens line, clear of the angle badge in the corner (QA 2026-10-25: they overlapped) */
+.pl-op-hud .cl-rec { top: 62px; }
+/* the corner hint pill (the mock's .tip style), placed in a pane corner by ArrangeTip.tsx */
+.pl-tip { position: absolute; z-index: 4; display: flex; gap: 8px; align-items: center; padding: 3px 4px 3px 9px; border-radius: 12px;
+  background: #000a; color: #8d93a3; font-size: 11px; white-space: nowrap; cursor: default; }
+.pl-tip button { background: none; border: 0; color: #8d93a3; cursor: pointer; font-size: 12px; padding: 0 5px; }
+.pl-tip button:hover { color: #c3c7d1; }
+.pl-panel .cl-map { font-size: 11px; }

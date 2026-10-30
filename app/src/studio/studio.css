@@ -1,0 +1,42 @@
+/* Studio shell (placeholder by A0; A1 owns it from here). Values come from tokens.css. */
+.st-app { display: grid; grid-template-rows: var(--st-bar-h) auto minmax(0, 1fr) auto; height: 100vh; overflow: hidden; }
+/* rows are named by part, so a screen without the step row (it collapses to nothing) never shifts the body into the wrong row */
+.st-app > .st-bar { grid-row: 1; }
+.st-app > .st-steps-row { grid-row: 2; }
+.st-app > .st-body { grid-row: 3; }
+.st-app > .st-foot { grid-row: 4; }
+/* the top bar: the app's title and the scene's name (shown in full; ellipsised only as a last resort, the full name on hover) */
+.st-bar { display: flex; align-items: center; padding: 0 16px; background: var(--st-grad-bar);
+  border-bottom: 1px solid var(--st-line); box-shadow: 0 1px 0 #000, 0 6px 18px #0006; position: relative; z-index: 2; }
+.st-bar-left { display: flex; align-items: baseline; justify-content: center; gap: 12px; flex: 1; min-width: 0; }
+.st-brand { flex: none; display: inline-flex; align-items: center; gap: 9px; font-size: 15px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
+/* the same viewfinder mark as Home's front door */
+.st-brand::before { content: ""; width: 18px; height: 12px; border: 2px solid var(--st-fg2); border-radius: 3px; background: radial-gradient(circle, var(--st-accent) 0 2px, transparent 2.5px); }
+.st-proj { color: var(--st-fg2); margin-left: 4px; padding-left: 14px; border-left: 1px solid var(--st-line2); min-width: 0; max-width: min(34em, 50vw); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* body: the stage slot (its first child) under the stage's own transport row */
+.st-body { display: grid; grid-template-rows: minmax(0, 1fr) auto; min-height: 0; }
+.st-stage { position: relative; min-height: 0; overflow: hidden; background: var(--st-grad-result); }
+.st-placeholder { margin: 0; padding: 24px; color: var(--st-fg3); }
+
+/* the bottom credit: one small line at the very bottom of the page naming the stage's open models (the contest requires it) */
+.st-foot { display: flex; justify-content: center; padding: 4px 16px; background: var(--st-panel); border-top: 1px solid var(--st-line); }
+.st-built-on { color: var(--st-fg3); font-size: 11px; }
+/* the one primary action per screen wears the accent token (ui.css hard-codes the old amber edge and text) */
+.st-root .st-btn.st-primary { border-color: var(--st-accent-line); color: var(--st-on-accent); }
+.st-root .st-record .st-btn.st-primary { border-color: #b93b33; color: #fff; }
+
+/* the stepper: Home at the row's left, the Brief → Board → Stage → Render → Export bar centred in the view, every tab's
+   label centred in its tab (the Scene stage renders the same stepper in its own top row) */
+.st-steps-row { position: relative; padding: 12px 24px; border-bottom: 1px solid var(--st-line); }
+.st-steps { display: flex; align-items: center; justify-content: center; flex: 1; min-width: 0; }
+.st-home-link { position: absolute; left: 24px; top: 50%; transform: translateY(-50%); color: var(--st-fg3); font-weight: 800; font-size: 13px; text-decoration: none; white-space: nowrap; }
+.st-home-link { transition: color .15s; }
+.st-home-link:hover { color: var(--st-fg); }
+.st-step-list { display: flex; gap: 3px; padding: 3px; margin: 0; list-style: none; border-radius: 99px; background: var(--st-panel); border: 1px solid var(--st-line); }
+.st-step-list li { display: flex; flex: 1 1 0; }
+.st-step-list button, .st-step { flex: 1; text-align: center; padding: 5px 16px; border-radius: 99px; color: var(--st-fg3); font: inherit; font-weight: 800; font-size: 12.5px; cursor: pointer;
+  border: 1px solid transparent; background: none; text-decoration: none; white-space: nowrap; transition: color .15s, background .15s, border-color .15s; }
+.st-step-list button:hover:not(:disabled), .st-step:hover { color: var(--st-fg2); }
+.st-step-list button.on, .st-step.on { background: var(--st-grad-on); color: var(--st-fg); border-color: var(--st-line2); box-shadow: inset 0 1px 0 #ffffff14, 0 1px 3px #0008; }
+.st-step-list button:focus-visible, .st-step:focus-visible, .st-home-link:focus-visible { outline: 2px solid var(--st-accent-line); outline-offset: 2px; }
+.st-step-list button:disabled { opacity: .35; cursor: default; }

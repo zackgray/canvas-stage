@@ -1,0 +1,5 @@
+/* the scene's name in the top bar: reads as the old plain label until hovered or focused */
+button.st-proj-edit { background: none; border: 0; padding: 2px 6px; font: inherit; cursor: text; border-radius: 4px; }
+button.st-proj-edit:hover, button.st-proj-edit:focus-visible { background: var(--st-bg2, rgba(255, 255, 255, 0.08)); color: var(--st-fg, inherit); }
+input.st-proj-input { font: inherit; color: var(--st-fg, inherit); background: var(--st-bg2, rgba(255, 255, 255, 0.08)); border: 1px solid var(--st-fg2, currentColor); border-radius: 4px; padding: 2px 6px; width: 20em; max-width: 40vw; }
+button.st-proj-edit:hover::after, button.st-proj-edit:focus-visible::after { content: ' ¸E'; opacity: 0.6; }

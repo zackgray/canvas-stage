@@ -1,0 +1,33 @@
+/* The controls screen (ControlsButton): a dim backdrop over the whole Stage with the mapping table on it,
+   like a game's controls page. The table itself is .cl-map (labs/controller/ui/lab.css); these rules carry
+   it if that sheet has not loaded and lay out the card. */
+.st-ctl {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000a;
+}
+.st-ctl-card {
+  max-width: min(680px, calc(100vw - 48px));
+  max-height: calc(100vh - 96px);
+  overflow: auto;
+  padding: 18px 22px;
+  border: 1px solid var(--st-line2, #372f45);
+  border-radius: var(--st-r, 6px);
+  background: var(--st-grad-panel, #15121b);
+  box-shadow: var(--st-shadow-media, 0 10px 30px #0008);
+  color: var(--st-fg, #e9e7ee);
+  font: 13px/1.45 var(--st-font, system-ui, sans-serif);
+}
+.st-ctl-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.st-ctl-head h3 { margin: 0; font-size: 14px; }
+.st-ctl-close { background: none; border: 0; color: inherit; font-size: 14px; cursor: pointer; opacity: 0.7; }
+.st-ctl-close:hover { opacity: 1; }
+.st-ctl-hint { margin: 10px 0 0; color: var(--st-fg3, #706b80); font-size: 12px; }
+.st-ctl .cl-map { border-collapse: collapse; font-size: 12px; }
+.st-ctl .cl-map th, .st-ctl .cl-map td { text-align: left; padding: 3px 14px 3px 0; border-bottom: 1px solid var(--st-line, #292333); }
+.st-ctl .cl-map th { color: var(--st-fg2, #a6a2b3); font-weight: normal; }
+.st-ctl .cl-map kbd { font: 11px ui-monospace, monospace; background: var(--st-panel2, #1c1824); border-radius: 3px; padding: 1px 5px; }

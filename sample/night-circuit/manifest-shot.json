@@ -1,0 +1,13 @@
+{
+ "id": "loc-2026-10-28T02-44-05-698",
+ "image": "/lab-assets/locations/loc-2026-10-28T02-44-05-698/still.png",
+ "width": 1920,
+ "height": 1088,
+ "prompt": "A rain-drenched racetrack at midnight, covered in puddles on gritty asphalt reflecting the neon lights in their reflections. Overhead stadium lights pierce through a heavy downpour, reflecting off a massive puddles in the dark, dramatic night. Fog obscures details in the distance. Rainy and dark and dramatic night time with billowing thunderhead clouds and deep blue shadows. @tommy walks in pro",
+ "seed": 111,
+ "fovDeg": 46.05098401705608,
+ "metric": true,
+ "depths": [],
+ "kind": "kit",
+ "plan": "/lab-assets/locations/loc-2026-10-28T02-44-05-698/plan.json"
+}

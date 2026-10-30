@@ -1,0 +1,16 @@
+{
+ "id": "sc-20261028022038-c9dp",
+ "name": "A rain-drenched racetrack at midnight",
+ "revision": 5,
+ "hidden": false,
+ "createdAt": "2026-10-28T02:20:38.866Z",
+ "updatedAt": "2026-10-28T20:03:35.242Z",
+ "worldId": "loc-2026-10-28T02-44-05-698",
+ "worlds": [
+  {
+   "id": "loc-2026-10-28T02-44-05-698",
+   "builtAt": "2026-10-28T02:44:05.795Z",
+   "brief": "9b18fbbdf42edf1d"
+  }
+ ]
+}

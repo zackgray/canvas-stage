@@ -1,0 +1,19 @@
+{
+  "sentence": "A country road at dusk: rail fences along it, haystacks in the field, trees on the horizon; a person walks toward us.",
+  "seed": 27,
+  "flat": [-3, -16, 3, 8],
+  "groundShade": 0.34,
+  "puddles": 8,
+  "tufts": 3000,
+  "fog": { "color": "#8d8580", "density": 0.012 },
+  "light": { "fill": 1.0, "key": 1.0, "keyDir": [150, 8] },
+  "sky": { "url": "/lab-assets/sky/procedural" },
+  "kit": [
+    { "kind": "treeline", "args": [190, 9, 11], "at": [0, -70] },
+    { "kind": "fence", "args": [18, 3, 0.25], "at": [-22, -12], "yawDeg": 0 },
+    { "kind": "fence", "args": [18, 4, 0.25], "at": [4.5, -12], "yawDeg": 0 },
+    { "kind": "haystack", "args": [5, 1.6], "at": [-11, -26] },
+    { "kind": "haystack", "args": [6, 1.2], "at": [-15, -31] },
+    { "kind": "haystack", "args": [7, 1.5], "at": [12, -29] }
+  ]
+}

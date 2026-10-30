@@ -1,0 +1,112 @@
+/* The object card (ObjectCard.tsx and the person/prop tab bodies): one dialog over a dimmed viewport, in the mock's pattern with
+   the app's own tokens. */
+.st-obj-dim { position: fixed; inset: 0; z-index: 60; display: flex; align-items: center; justify-content: center; padding: 20px; overflow-y: auto;
+  background: rgba(6, 5, 10, 0.55); backdrop-filter: blur(2px); }
+.st-obj-card { width: min(920px, 100%); max-height: calc(100vh - 40px); margin: auto; box-sizing: border-box; display: flex; flex-direction: column;
+  background: var(--st-panel); border: 1px solid var(--st-line2); border-radius: 18px; box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55); overflow: hidden; }
+
+.oc-head { display: flex; align-items: flex-start; gap: 12px; padding: 18px 22px 0; }
+.oc-head-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.oc-kind { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--st-fg3); }
+.oc-name { font: inherit; font-size: 22px; font-weight: 800; color: var(--st-fg); background: transparent; border: 1px solid transparent; border-radius: 8px; padding: 2px 8px; margin-left: -8px; min-width: 0; }
+.oc-name:hover { border-color: var(--st-line2); }
+.oc-name:focus { outline: 0; border-color: var(--st-accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--st-accent) 22%, transparent); background: var(--st-grad-input); }
+.oc-title { margin: 0; font-size: 22px; font-weight: 800; color: var(--st-fg); }
+.oc-x { width: 34px; height: 34px; flex: none; border-radius: 9px; border: 1px solid transparent; background: transparent; color: var(--st-fg2); cursor: pointer; font-size: 16px; }
+.oc-x:hover { background: var(--st-panel2); border-color: var(--st-line2); color: var(--st-fg); }
+
+.oc-tabs { display: flex; gap: 4px; padding: 12px 22px 0; border-bottom: 1px solid var(--st-line); }
+.oc-tabs button { background: transparent; border: 0; border-bottom: 2px solid transparent; padding: 8px 14px 10px; margin-bottom: -1px; cursor: pointer; color: var(--st-fg2); font-weight: 600; }
+.oc-tabs button:hover { color: var(--st-fg); }
+.oc-tabs button[aria-selected="true"] { color: var(--st-fg); border-bottom-color: var(--st-accent); }
+
+.oc-body { padding: 18px 22px 20px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--st-line2) transparent; }
+.oc-body .st-warn, .oc-body .st-muted, .oc-body .st-field-hint { margin: 0; font-size: 12.5px; }
+
+/* the LOOK tab: the large preview left, the words and presses right */
+.oc-look { display: grid; grid-template-columns: 320px 1fr; gap: 24px; }
+.oc-look > div { min-width: 0; }
+.oc-pane { position: relative; aspect-ratio: 4 / 4.6; border-radius: 14px; overflow: hidden; border: 1px solid var(--st-line2); background: #0d0b12; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); }
+.oc-pane.oc-pane-wide { aspect-ratio: 16 / 10; }
+.oc-pane .oc-imgwait, .oc-pane img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.oc-pane img { cursor: zoom-in; }
+.oc-badge { position: absolute; left: 10px; top: 10px; z-index: 2; font-size: 11px; padding: 3px 9px; border-radius: 99px; background: rgba(13, 11, 18, 0.85); border: 1px solid var(--st-line2); color: var(--st-fg2); }
+.oc-badge.ok { color: var(--st-ok); border-color: color-mix(in srgb, var(--st-ok) 50%, transparent); }
+.oc-badge.oc-badge-r { left: auto; right: 10px; }
+
+/* a picture that has not loaded: a busy shimmer, never a flat grey card; after the one retry, a plain note */
+.oc-imgwait { position: relative; display: block; width: 100%; height: 100%; min-height: 48px;
+  background: linear-gradient(100deg, var(--st-panel2) 35%, color-mix(in srgb, var(--st-panel2) 60%, var(--st-fg3)) 50%, var(--st-panel2) 65%) 0 0 / 200% 100%;
+  animation: oc-shimmer 1.3s linear infinite; }
+@keyframes oc-shimmer { to { background-position: -200% 0; } }
+.oc-imgbad { animation: none; display: grid; place-items: center; background: var(--st-panel2); }
+.oc-imgbad-note { font-size: 12px; color: var(--st-fg3); padding: 8px; text-align: center; }
+
+/* the history strip: every generation, newest first, arrows to scroll, a click opens it large and never spends */
+.oc-hist-h { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin: 14px 0 6px; font-weight: 600; }
+.oc-hist-h .st-muted { font-weight: 400; }
+.oc-sw { position: relative; min-width: 0; }
+.oc-arr { display: none; position: absolute; top: 3px; bottom: 11px; width: 30px; z-index: 2; border: 1px solid var(--st-line2); border-radius: 9px; cursor: pointer;
+  color: var(--st-fg); font-size: 18px; align-items: center; justify-content: center; background: var(--st-grad-button); box-shadow: 0 2px 10px rgba(0, 0, 0, 0.65); }
+.oc-arr:hover { background: var(--st-grad-button-hover); }
+.oc-arr.oc-arr-l { left: 0; } .oc-arr.oc-arr-r { right: 0; }
+.oc-sw.oc-can-l .oc-arr-l, .oc-sw.oc-can-r .oc-arr-r { display: flex; }
+.oc-strip { display: flex; gap: 8px; overflow-x: auto; padding: 3px 3px 8px; scrollbar-width: thin; scrollbar-color: var(--st-line2) transparent; }
+.oc-thumb { position: relative; flex: 0 0 64px; height: 76px; border-radius: 9px; overflow: hidden; border: 2px solid var(--st-line2); padding: 0; background: #0d0b12; cursor: zoom-in; }
+.oc-thumb.oc-thumb-wide { flex: 0 0 118px; height: 76px; }
+.oc-thumb:hover { border-color: var(--st-fg3); }
+.oc-thumb img, .oc-thumb .oc-imgwait { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; border: 0; }
+.oc-thumb.on { border-color: var(--st-accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--st-accent) 22%, transparent); }
+.oc-thumb .oc-tick { position: absolute; right: 3px; bottom: 3px; z-index: 2; width: 18px; height: 18px; border-radius: 50%; background: var(--st-ok); color: #07140d; font-size: 11px; font-weight: 800; display: grid; place-items: center; }
+.oc-thumb .oc-built { position: absolute; right: 3px; top: 3px; z-index: 2; padding: 1px 6px; border-radius: 99px; font-size: 9px; font-weight: 700; background: rgba(13, 11, 18, 0.88); border: 1px solid color-mix(in srgb, var(--st-ok) 60%, transparent); color: var(--st-ok); }
+.oc-thumb .oc-lab { position: absolute; left: 3px; top: 3px; z-index: 2; font-size: 9px; font-weight: 700; padding: 1px 5px; border-radius: 99px; background: rgba(13, 11, 18, 0.85); border: 1px solid var(--st-line2); color: var(--st-fg2); }
+
+/* the right column: words, count, the one primary press */
+.oc-field { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
+.oc-field > label, .oc-lab-h { font-weight: 600; }
+.oc-field .oc-box { background: var(--st-grad-input); border: 1.5px solid var(--st-line2); border-radius: 12px; padding: 9px 12px; box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.45); }
+.oc-field .oc-box:focus-within { border-color: var(--st-accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--st-accent) 22%, transparent); }
+.oc-field textarea { width: 100%; box-sizing: border-box; background: transparent; border: 0; padding: 0; resize: vertical; line-height: 1.55; font: inherit; color: inherit; }
+.oc-field textarea:focus { outline: 0; }
+.oc-count { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
+.oc-stepper { display: inline-flex; align-items: center; border: 1.5px solid var(--st-line2); border-radius: 9px; background: var(--st-grad-input); overflow: hidden; }
+.oc-stepper button { width: 32px; height: 32px; border: 0; background: transparent; cursor: pointer; font-size: 16px; color: var(--st-fg2); }
+.oc-stepper button:hover { background: var(--st-panel2); color: var(--st-fg); }
+.oc-stepper output { min-width: 30px; text-align: center; font-weight: 600; }
+.oc-cta { display: flex; flex-direction: column; gap: 10px; border-top: 1px solid var(--st-line); padding-top: 14px; margin-top: 4px; align-items: flex-start; }
+.oc-cta .st-pricebtn { display: inline-flex; }
+.oc-spin { display: inline-block; width: 12px; height: 12px; margin-right: 6px; vertical-align: -1px; border: 2px solid currentColor; border-right-color: transparent; border-radius: 50%; animation: oc-spin 0.7s linear infinite; }
+@keyframes oc-spin { to { transform: rotate(360deg); } }
+
+/* the prop's Picture | 3D preview toggle and the grey turntable */
+.oc-viewrow { display: flex; align-items: center; gap: 10px; margin: 12px 0 8px; flex-wrap: wrap; }
+.oc-seg { display: inline-flex; padding: 3px; gap: 2px; background: var(--st-grad-input); border: 1px solid var(--st-line2); border-radius: 10px; }
+.oc-seg button { border: 0; background: transparent; padding: 5px 12px; border-radius: 7px; cursor: pointer; color: var(--st-fg2); }
+.oc-seg button[aria-pressed="true"] { background: linear-gradient(180deg, #3b3547, #2e2939); color: var(--st-fg); }
+.oc-preview { width: 100%; aspect-ratio: 16 / 10; border-radius: 14px; overflow: hidden; border: 1px solid var(--st-line2); background: #2a2a30; cursor: grab; }
+.oc-preview canvas { width: 100%; height: 100%; display: block; }
+.oc-preview-fallback { display: grid; place-items: center; aspect-ratio: 16 / 10; border-radius: 14px; border: 1px dashed var(--st-line2); color: var(--st-fg3); font-size: 12.5px; padding: 12px; text-align: center; }
+
+/* the model history: what was built, going back is free */
+.oc-models { border: 1px solid var(--st-line); border-radius: 10px; background: var(--st-panel2); padding: 8px 12px; margin-top: 4px; width: 100%; box-sizing: border-box; }
+.oc-models h5 { margin: 0 0 4px; font-size: 12px; font-weight: 600; }
+.oc-model-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 5px 0; color: var(--st-fg2); border-top: 1px solid var(--st-line); font-size: 12.5px; }
+.oc-model-row:first-of-type { border-top: 0; }
+.oc-model-row b { color: var(--st-fg); font-weight: 600; }
+.oc-link { background: none; border: 0; padding: 0; color: var(--st-accent); cursor: pointer; text-decoration: underline; text-underline-offset: 2px; font-size: 12.5px; }
+.oc-link:disabled { color: var(--st-fg3); cursor: not-allowed; text-decoration: none; }
+
+/* the review overlay's action row (a Lightbox aside): looking is free, the one priced press is always a separate button */
+.st-lightbox .oc-lb-aside { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+
+@media (max-width: 760px) {
+  .oc-look { grid-template-columns: 1fr; }
+}
+/* the right panel's Who plays them (WhoPlays.tsx): their face and name */
+.oc-who { display: flex; gap: 10px; align-items: center; margin: 4px 0 8px; }
+.oc-who-face { position: relative; flex: 0 0 56px; height: 64px; border-radius: 8px; overflow: hidden; border: 1px solid var(--st-line2); background: #0d0b12; }
+.oc-who-face img, .oc-who-face .oc-imgwait { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; border: 0; }
+/* the large picture is the one press that opens the viewer (prop-pick-view): a plain button over the whole pane */
+.oc-pane-view { position: absolute; inset: 0; padding: 0; border: 0; background: none; cursor: zoom-in; }
+.oc-pane-view:focus-visible { outline: 2px solid var(--st-accent); outline-offset: -2px; }
+.oc-sent { font-size: 12px; line-height: 1.4; margin-top: 8px; overflow-wrap: anywhere; }

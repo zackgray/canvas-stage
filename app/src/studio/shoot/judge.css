@@ -1,0 +1,14 @@
+/* The still judge under the lightbox image (studio tokens only). Crops are never scaled: their frame scrolls. */
+.st-judge { cursor: default; width: min(1200px, 100%); background: var(--st-panel); border: 1px solid var(--st-line); border-radius: var(--st-r); padding: 12px; box-sizing: border-box; }
+.st-judge-head { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 8px; }
+.st-judge-head p { margin: 0; }
+.st-people { list-style: none; margin: 0 0 10px; padding: 0; display: flex; gap: 14px; flex-wrap: wrap; }
+.st-person { flex: 0 1 auto; min-width: 0; max-width: 100%; }
+.st-person-flag .st-crop100 { border-color: var(--st-warn, #d9a441); }
+.st-person-pair { display: flex; gap: 8px; align-items: flex-start; }
+.st-person-card { width: auto; border-radius: var(--st-r); border: 1px solid var(--st-line2); }
+.st-person-none { display: inline-block; padding: 8px; }
+.st-person p { margin: 6px 0; max-width: 420px; }
+.st-crop100 { max-width: min(560px, 70vw); max-height: 360px; overflow: auto; background: var(--st-bg); border: 1px solid var(--st-line2); border-radius: var(--st-r); }
+.st-lightbox-judge { justify-content: flex-start; overflow-y: auto; }
+.st-lightbox-judge > img { max-height: 62vh; }

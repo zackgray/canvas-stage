@@ -1,0 +1,14 @@
+/* CandidateStrip (src/studio/ui): the row of candidate cards under a stage */
+.st-strip { display: flex; gap: 10px; overflow-x: auto; padding: 4px 2px; }
+.st-strip-empty { margin: 4px 2px; color: var(--st-fg3); font-size: 12px; }
+.st-strip-card { flex: 0 0 auto; width: 136px; display: grid; gap: 4px; align-content: start; padding: 6px; border: 1px solid var(--st-line2); border-radius: var(--st-r); background: var(--st-grad-input); }
+.st-strip-card.st-strip-selected { border-color: var(--st-blue); }
+.st-strip-thumb { display: block; width: 100%; aspect-ratio: 1; padding: 0; border: 1px solid var(--st-line); border-radius: var(--st-r); background: var(--st-panel2); cursor: zoom-in; overflow: hidden; }
+.st-strip-thumb:focus-visible { border-color: var(--st-blue); outline: none; }
+.st-strip-thumb img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.st-strip-ph { display: grid; place-content: center; gap: 2px; height: 100%; color: var(--st-fg3); font-size: 11px; text-align: center; }
+.st-strip-cap { font-size: 12px; color: var(--st-fg); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.st-strip-reason { font-size: 11px; color: var(--st-fg2); }
+.st-strip-badge { font-size: 10px; color: var(--st-fg3); letter-spacing: 0.04em; text-transform: uppercase; }
+.st-strip-acts { display: flex; flex-wrap: wrap; gap: 4px; }
+.st-strip-acts .st-btn { height: auto; padding: 2px 9px; font-size: 11px; }

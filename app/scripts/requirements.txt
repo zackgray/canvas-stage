@@ -1,0 +1,17 @@
+# The one Python environment for the app. Everything its scripts import, in three tiers:
+#
+#   pip install -r requirements.txt        (everything: the finish, depth of field from the still, the massing clay)
+#   pip install -r requirements-core.txt    (just the Render finish, colour match and face pass: OpenCV + numpy, no GPU)
+#
+# Then set CANVAS_PYTHON in app/.env to that Python's full path (empty = the python on your PATH; LIFT_PYTHON, the older
+# name, still works). `python scripts/check_python.py` lists what imports; the dev server logs the gaps at start. SETUP.md step 1.
+# Versions are the ones your own venv runs; the floors are the oldest known to work with the scripts.
+# The scripts under scripts/ that are not in the shipped chain (lift_performance, place_matte, realism_*, surround_*, finish_depth)
+# also import SAM2, MoGe, rtmlib and Pillow: they are research tools, not listed here.
+
+-r requirements-core.txt
+
+# Massing clay for generated set pieces (scripts/pieces/massing.py)
+trimesh>=4.0           # tested: 5.1.1
+scipy>=1.11            # tested: 1.17.1
+scikit-image>=0.22     # tested: 0.26.0

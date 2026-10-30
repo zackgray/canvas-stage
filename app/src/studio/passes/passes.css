@@ -1,0 +1,11 @@
+/* Keep / Discard card (studio tokens only). The crops are never scaled: width/height stay natural, the frame scrolls. */
+.st-pass { background: var(--st-panel); border: 1px solid var(--st-line); border-radius: var(--st-r); padding: 12px; margin: 0 0 10px; }
+.st-pass h4 { margin: 0 0 8px; font-size: 13px; color: var(--st-fg); }
+.st-pass p { margin: 6px 0; }
+.st-pass-pair { display: flex; gap: 12px; flex-wrap: wrap; }
+.st-pass-crop { margin: 0; flex: 1 1 320px; min-width: 0; }
+.st-pass-crop figcaption { color: var(--st-fg2); font-size: 11px; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 4px; }
+.st-pass-frame { max-height: 70vh; overflow: auto; background: var(--st-bg); border: 1px solid var(--st-line2); border-radius: var(--st-r); }
+.st-pass-frame img { display: block; max-width: none; width: auto; height: auto; image-rendering: auto; }
+.st-pass-actions { display: flex; gap: 8px; margin-top: 8px; }
+.st-pass-done { opacity: .7; }

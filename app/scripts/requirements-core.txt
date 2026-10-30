@@ -1,0 +1,5 @@
+# The Render finish (grade, sharpen, grain), the hero still's colour match, the face detail pass and the clay video.
+# Run with numpy 2.4 and OpenCV 4.13 / 5.0. No GPU. See requirements.txt for the optional pieces.
+
+numpy>=2.0
+opencv-python>=4.10

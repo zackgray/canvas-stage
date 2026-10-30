@@ -1,0 +1,27 @@
+/* Home: the front door over the Resume grid. */
+.st-home { height: 100vh; overflow: auto; background: var(--st-grad-result); }
+.st-home-body { max-width: 1080px; margin: 0 auto; padding: 0 32px 72px; }
+.st-home-launch > .st-warn { margin: 0; padding: 10px 14px; border: 1px solid #6a5420; border-radius: 8px; background: #231c0c; font-size: 13px; }
+.st-home-resume-head { display: flex; align-items: baseline; gap: 10px; margin: 0 0 16px; padding-top: 22px; border-top: 1px solid var(--st-line); }
+.st-home-resume h2 { margin: 0; font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--st-fg2); }
+.st-home-count { font-size: 12px; color: var(--st-fg3); }
+.st-resume { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; }
+.st-resume-row { position: relative; display: flex; flex-direction: column; border-radius: 12px; overflow: hidden; background: var(--st-grad-panel);
+  border: 1px solid var(--st-line); box-shadow: 0 1px 2px #0008; transition: transform .18s, border-color .18s, box-shadow .18s; }
+.st-resume-row:hover, .st-resume-row:focus-within { transform: translateY(-3px); border-color: var(--st-line2); box-shadow: var(--st-shadow-media); }
+.st-resume-open { display: block; }
+.st-thumb { display: block; width: 100%; aspect-ratio: 16 / 9; background: repeating-linear-gradient(45deg, #1b1d22 0 6px, #202329 6px 12px) center / cover; border-bottom: 1px solid var(--st-line); }
+.st-resume-text { display: grid; gap: 3px; min-width: 0; padding: 12px 14px 4px; }
+.st-resume-title { color: var(--st-fg); font-weight: 700; font-size: 14px; text-decoration: none; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.st-resume-title::after { content: ""; position: absolute; inset: 0; } /* the whole card opens the scene; the actions sit above it */
+.st-resume-text small { color: var(--st-fg3); font-size: 12px; }
+.st-resume-name { position: relative; z-index: 1; font: inherit; padding: 3px 6px; background: var(--st-panel2); color: var(--st-fg); border: 1px solid var(--st-line2); border-radius: 6px; }
+.st-resume-acts { position: relative; z-index: 1; display: flex; gap: 14px; padding: 6px 14px 12px; opacity: .55; transition: opacity .15s; }
+.st-resume-row:hover .st-resume-acts, .st-resume-row:focus-within .st-resume-acts { opacity: 1; }
+.st-resume-row > .st-ask { position: relative; z-index: 1; padding: 6px 14px 12px; font-size: 12px; color: var(--st-fg2); display: flex; flex-wrap: wrap; gap: 6px 8px; align-items: center; }
+.st-link { background: none; border: 0; padding: 0; font: inherit; font-size: 12px; color: var(--st-fg3); cursor: pointer; }
+.st-link:hover { color: var(--st-fg); }
+/* nothing to resume yet: a quiet framed slot, not a bare line */
+.st-resume-empty { margin: 0; padding: 40px 24px; text-align: center; border: 1px dashed var(--st-line2); border-radius: 12px; color: var(--st-fg3); font-size: 14px; }
+.st-resume-empty b { display: block; margin-bottom: 4px; color: var(--st-fg2); font-size: 15px; }
+@media (prefers-reduced-motion: reduce) { .st-resume-row, .st-hbox-start.st-btn { transition: none; } .st-resume-row:hover { transform: none; } }

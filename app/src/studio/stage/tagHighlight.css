@@ -1,0 +1,16 @@
+/* The Prompt box's chip copy (TagHighlight.tsx): the words behind a transparent textarea (after it in the page, so its ref is set
+   when the copy hooks its scroll; drawn under it by the wrap's own stacking), the @tags tinted as the folded line's
+   chips (.sd-chip, design.css), with no change to the text's width so the copy and the caret stay in line. */
+.st-hl-wrap { position: relative; isolation: isolate; }
+.st-hl { position: absolute; z-index: -1; box-sizing: border-box; margin: 0; border: 0; overflow: hidden; pointer-events: none; color: var(--st-fg);
+  white-space: pre-wrap; overflow-wrap: break-word; }
+.st-hl.fill { background: var(--st-grad-input); border-radius: calc(var(--st-r) - 1px); }
+/* the box on top: its own caret, selection and placeholder, its words drawn by the copy */
+.st-hl-wrap > textarea { background: transparent; color: transparent; caret-color: var(--st-fg); }
+.st-hl-wrap > textarea::placeholder { color: var(--st-fg3); }
+.st-hl-wrap > textarea::selection { color: transparent; background: color-mix(in srgb, var(--st-accent) 35%, transparent); }
+.st-hl-tag { border-radius: 99px; background: #2d2640; color: var(--st-fg); box-shadow: 0 0 0 1px var(--st-line2); box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.st-hl-tag.b { background: #1d2a40; color: #9fc0f0; box-shadow: 0 0 0 1px #34507a; }
+.st-hl-tag.g { background: #1f3322; color: #b6e36a; box-shadow: 0 0 0 1px #3d6030; }
+.st-hl-tag.w { background: #33290f; color: var(--st-warn); box-shadow: 0 0 0 1px #6a5420; }
+.st-hl-tag.gone { background: #3a1519; color: #ff8d8d; box-shadow: 0 0 0 1px #8a2b34; text-decoration: line-through; }

@@ -1,0 +1,29 @@
+{
+  "path": [
+    [
+      0.6,
+      -12.39
+    ],
+    [
+      0.445675083322456,
+      -12.262784355944447
+    ]
+  ],
+  "actions": [
+    {
+      "kind": "move",
+      "at": 0,
+      "seconds": 3.33,
+      "motion": "gen:takes-out-an-object-out-of-it-8",
+      "toward": [
+        0.13,
+        -11.95
+      ]
+    }
+  ],
+  "pace": 0.8,
+  "castId": "tina-mvq2f3ek2",
+  "costume": "modern",
+  "stand": true,
+  "shotSeconds": 8
+}

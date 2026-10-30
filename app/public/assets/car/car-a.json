@@ -1,0 +1,64 @@
+{
+  "source": "experiments/e24/car-a (1386192 vertices, 2855508 triangles) <- e9/car.triposplat-mesh.glb",
+  "vertices": 32018,
+  "triangles": 77540,
+  "layout": {
+    "positions": [
+      0,
+      384216
+    ],
+    "normals": [
+      384216,
+      384216
+    ],
+    "colors": [
+      768432,
+      384216
+    ],
+    "indices": [
+      1152648,
+      930480
+    ]
+  },
+  "colorSpace": "linear vertex colour (GLB COLOR_0)",
+  "frame": "metres; +Y up; length along X, front at +X; tyre contacts at y = 0; X/Z centred",
+  "decimation": {
+    "tool": "meshoptimizer simplifyWithAttributes (quadric, MIT)",
+    "targetTriangles": 80000,
+    "colorWeight": 0.5,
+    "flags": [
+      "Prune"
+    ],
+    "errorM": 0.0139
+  },
+  "levelling": {
+    "rearContact": {
+      "x": -0.3261135220527649,
+      "y": -0.14421123266220093
+    },
+    "frontContact": {
+      "x": 0.263280987739563,
+      "y": -0.18742084503173828
+    },
+    "pitchCorrectedDeg": -4.19
+  },
+  "scale": 4.4957,
+  "scaleZ": 3.444,
+  "sizeM": [
+    4.497,
+    1.464,
+    1.995
+  ],
+  "bbox": {
+    "mn": [
+      -2.2484917640686035,
+      0.000654420058708638,
+      -0.9956749677658081
+    ],
+    "mx": [
+      2.248210906982422,
+      1.4644886255264282,
+      0.998982310295105
+    ]
+  }
+}

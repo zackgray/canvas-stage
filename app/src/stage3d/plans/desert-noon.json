@@ -1,0 +1,19 @@
+{
+  "sentence": "A dry desert flat at noon under a hard sun: scattered boulders and low earth banks open to the horizon; a person walks toward us.",
+  "seed": 33,
+  "flat": [-3, -16, 3, 8],
+  "groundShade": 0.6,
+  "puddles": 0,
+  "tufts": 0,
+  "fog": { "color": "#d8cfc0", "density": 0.007 },
+  "light": { "fill": 1.6, "key": 1.9, "keyDir": [120, 60] },
+  "sky": { "url": "/lab-assets/sky/procedural" },
+  "kit": [
+    { "kind": "mound", "args": [40, 2, 1.2], "at": [-30, -45], "yawDeg": 8 },
+    { "kind": "mound", "args": [30, 3, 0.9], "at": [26, -38], "yawDeg": -12 },
+    { "kind": "rock", "args": [11, 1.8], "at": [-9, -24] },
+    { "kind": "rock", "args": [12, 0.7], "at": [-5.5, -12] },
+    { "kind": "rock", "args": [13, 2.4], "at": [13, -30] },
+    { "kind": "rock", "args": [14, 0.5], "at": [6, -17] }
+  ]
+}

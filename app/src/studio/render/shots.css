@@ -1,0 +1,10 @@
+/* Render's shots list (ShotsList) and Export's other shots: one row per take, its picture, its facts, Play / Download */
+.st-shots { display: flex; flex-direction: column; gap: 6px; }
+.st-shot-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; max-height: 300px; overflow-y: auto; }
+.st-shot { display: flex; align-items: center; gap: 6px; border: 1px solid var(--st-line); border-radius: 4px; padding: 4px; }
+.st-shot-on { border-color: var(--st-accent); background: var(--st-panel2); }
+.st-shot-pick { flex: 1; min-width: 0; display: flex; align-items: center; gap: 8px; padding: 0; border: 0; background: none; color: inherit; text-align: left; cursor: pointer; font: inherit; }
+.st-shot-thumb { width: 80px; flex: none; aspect-ratio: 1920 / 1088; object-fit: cover; border-radius: 3px; background: #000; display: block; }
+.st-shot-thumb-none { background: repeating-linear-gradient(45deg, #15161a 0 6px, #1a1c21 6px 12px); }
+.st-shot-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; font-size: 12px; }
+.st-shot-text .st-muted { font-size: 11px; }

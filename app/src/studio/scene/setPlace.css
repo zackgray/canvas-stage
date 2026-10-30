@@ -1,0 +1,9 @@
+.sd-place { display: flex; flex-direction: column; gap: 8px; }
+.sd-place .bl-top { max-height: 46vh; width: 100%; }
+.sd-place-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.sd-place-name { margin-right: 4px; }
+.sd-place-add { margin-left: auto; }
+/* the studio's figcaption is absolute (picture sheets); Props in 3D's rows are not positioned, so their captions (and the priced Build
+   in 3D button) piled up at the page foot: keep them in their rows */
+.sd-piece figcaption { position: static; padding: 0; background: none; }
+.sd-place-pick select { max-width: 220px; }

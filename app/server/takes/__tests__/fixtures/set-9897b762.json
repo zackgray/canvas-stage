@@ -1,0 +1,62 @@
+{
+  "sentence": "A rain-drenched racetrack at midnight, covered in puddles on gritty asphalt reflecting the neon lights in their reflections. Overhead stadium lights pierce through a heavy downpour, reflecting off a massive puddles in the dark, dramatic night. Fog obscures details in the distance. Rainy and dark and dramatic night time with billowing thunderhead clouds and deep blue shadows. tommy walks in profile to the camera through the rain toward the parked open-wheel race car.",
+  "flat": [
+    -3,
+    -16,
+    3,
+    8
+  ],
+  "tufts": 0,
+  "seed": 111,
+  "groundShade": 0.2,
+  "puddles": 150,
+  "fog": {
+    "color": "#2a2d33",
+    "density": 0.02
+  },
+  "light": {
+    "fill": 0.45,
+    "key": 0.35,
+    "keyDir": [
+      200,
+      28
+    ]
+  },
+  "sky": {
+    "url": "/lab-assets/sky/procedural",
+    "yawDeg": 90,
+    "horizonLiftDeg": 1.2,
+    "gain": 0.3,
+    "band": [
+      0.31,
+      0.9
+    ],
+    "cutDeg": 6
+  },
+  "kit": [
+    {
+      "kind": "car",
+      "at": [
+        3.71,
+        -17.96
+      ],
+      "pieceTag": "prop:car",
+      "glb": {
+        "url": "/lab-assets/locations/loc-2026-10-28T02-44-05-698/pieces/car/p-20261028024613-86of/mesh.glb",
+        "massingUrl": "/lab-assets/locations/loc-2026-10-28T02-44-05-698/pieces/car/p-20261028024613-86of/massing.glb",
+        "yawOffsetDeg": 90,
+        "unitScale": 6.0064
+      },
+      "yawDeg": 89,
+      "scale": 0.95,
+      "lift": -0.14
+    }
+  ],
+  "mark": {
+    "at": [
+      1.17,
+      -18.85
+    ],
+    "yawDeg": 131.4
+  }
+}

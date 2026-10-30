@@ -1,0 +1,22 @@
+{
+ "reach-low": {
+  "clip": "c06",
+  "t": 1.87,
+  "frame": 56
+ },
+ "hold-chest": {
+  "clip": "c05",
+  "t": 6.73,
+  "frame": 202
+ },
+ "hold-high": {
+  "clip": "c07",
+  "t": 5.47,
+  "frame": 164
+ },
+ "stand": {
+  "clip": "c01",
+  "t": 0.0,
+  "frame": 0
+ }
+}

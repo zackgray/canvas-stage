@@ -1,0 +1,137 @@
+/* Studio screens (A1): panes, the Shoot viewport, sheets, steps, and a dark restyle of the lab widgets they compose. */
+
+/* ---- layout: the stage slot holds the lab viewport and the screen on top of it ---- */
+.st-vp { position: absolute; left: 0; top: 0; bottom: 0; right: var(--st-shoot-w, 340px); visibility: hidden; pointer-events: none; }
+/* the Stage shows the lab viewport beside the screen column, never under it: a pane under the column is cut off and
+   off-centre (it keeps the base `right`) */
+.st-vp.st-vp-on { visibility: visible; pointer-events: auto; }
+.st-vp > .pl-viewport { width: 100%; height: 100%; }
+.st-screen { position: absolute; inset: 0; overflow: auto; }
+.st-screen-stage { left: auto; width: var(--st-shoot-w, 340px); overflow: hidden; pointer-events: none; }
+.st-screen-stage > * { pointer-events: auto; }
+/* the Stage: the slot is a grid — the viewport over the words drawer (PromptDrawer) in the left column, the panel the full height
+   of the right one (the same fixed track); the drawer's height comes out of the viewport alone, and the panes and letterbox
+   follow the viewport's size as they do on a window resize */
+.st-stage.st-stage-on { display: grid; grid-template-columns: minmax(0, 1fr) var(--st-shoot-w, 340px); grid-template-rows: minmax(0, 1fr) auto; }
+.st-stage-on > .st-vp { position: relative; inset: auto; grid-column: 1; grid-row: 1; min-height: 0; }
+.st-stage-on > .st-screen-stage { position: relative; inset: auto; width: auto; grid-column: 2; grid-row: 1 / span 2; min-height: 0; }
+.st-stage-on > .st-drawer { grid-column: 1; grid-row: 2; }
+.st-two { display: grid; grid-template-columns: var(--st-controls-w) minmax(0, 1fr); height: 100%; min-height: 0; }
+.st-pane { padding: 22px 24px; overflow-y: auto; min-height: 0; }
+.st-controls { background: var(--st-grad-panel); border-right: 1px solid var(--st-line); box-shadow: inset -1px 0 0 #ffffff05; }
+.st-result { background: var(--st-grad-result); }
+.st-side { height: 100%; background: var(--st-grad-panel); border-left: 1px solid var(--st-line); padding: 18px 18px 24px; }
+
+/* ---- type ---- */
+.st-pane h1 { margin: 0 0 10px; font-size: 18px; font-weight: 600; letter-spacing: -0.01em; }
+.st-pane h2, .st-rowhead h2 { margin: 0; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--st-fg3); }
+.st-rowhead { display: flex; align-items: baseline; justify-content: space-between; margin: 18px 0 8px; }
+.st-title-row { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.st-muted { color: var(--st-fg3); font-size: 12px; }
+.st-warn { color: var(--st-warn); font-size: 12px; margin: 6px 0; }
+.st-desc { color: var(--st-fg2); max-width: 70ch; margin: 4px 0 14px; }
+.st-link { color: var(--st-fg2); }
+.st-worldline { margin: 0 0 8px; font-size: 14px; }
+.st-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin: 12px 0 6px; }
+.st-form { margin-top: 8px; }
+.st-knob-head { display: flex; justify-content: space-between; }
+.st-knob-head code { color: var(--st-fg3); font-variant-numeric: tabular-nums; }
+.st-range { width: 100%; accent-color: var(--st-accent); }
+
+/* ---- segmented control ---- */
+.st-seg { display: inline-flex; overflow: hidden; margin: 4px 0 10px; padding: 2px; border: 1px solid var(--st-line2); border-radius: var(--st-r); background: var(--st-grad-button); box-shadow: var(--st-shadow-button); }
+.st-seg button { height: 26px; padding: 0 12px; border: 0; border-radius: 4px; background: transparent; box-shadow: none; color: var(--st-fg2); cursor: pointer; }
+.st-seg button.st-seg-on { background: var(--st-grad-on); color: var(--st-fg); box-shadow: inset 0 1px 0 #ffffff14; }
+.st-seg button:disabled { opacity: 0.35; cursor: default; }
+.st-seg-small button { height: 22px; padding: 0 9px; font-size: 12px; }
+
+/* ---- faces, sheets, hero, thumbs ---- */
+.st-faces { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 10px; }
+.st-faces-big { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); max-width: 760px; }
+.st-face { position: relative; padding: 0; aspect-ratio: 3 / 4; overflow: hidden; border: 2px solid transparent; border-radius: 5px; background: var(--st-panel2);
+  box-shadow: var(--st-shadow-media); cursor: pointer; }
+.st-face img, .st-face .st-ph { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.st-face .st-ph { background: repeating-linear-gradient(45deg, #1b1d22 0 6px, #202329 6px 12px); }
+.st-face span { position: absolute; left: 0; right: 0; bottom: 0; padding: 14px 8px 4px; font-size: 11px; text-align: left; color: var(--st-fg); background: linear-gradient(transparent, #000b); }
+.st-face-on { border-color: var(--st-accent); box-shadow: 0 0 0 1px #e3b05a55, 0 8px 24px #e3b05a22; }
+.st-sheet { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; max-width: 1100px; }
+.st-sheet figure { position: relative; margin: 0; aspect-ratio: 9 / 16; overflow: hidden; border-radius: 5px; background: #000; box-shadow: var(--st-shadow-media); }
+.st-sheet figure.st-big { grid-column: span 2; grid-row: span 2; }
+.st-sheet img { width: 100%; height: 100%; object-fit: contain; display: block; }
+figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 4px 8px; font-size: 11px; background: linear-gradient(transparent, #000b); color: var(--st-fg); }
+.st-redo { position: absolute; right: 6px; top: 6px; opacity: 0; transition: opacity 0.12s; padding: 3px 6px; border-radius: 6px; background: #000a; }
+.st-sheet figure:hover .st-redo, .st-redo:focus-within { opacity: 1; }
+.st-hero { position: relative; aspect-ratio: 16 / 9; width: min(100%, calc(62vh * 16 / 9)); overflow: hidden; border: 1px solid var(--st-line); border-radius: var(--st-r);
+  background: #000; box-shadow: var(--st-shadow-media); }
+.st-hero video { width: 100%; height: 100%; display: block; object-fit: contain; }
+.st-hero-empty { margin: 0; position: absolute; inset: 0; display: grid; place-items: center; color: var(--st-fg3); background: repeating-linear-gradient(45deg, #15161a 0 8px, #1a1c21 8px 16px); }
+.st-tag { position: absolute; left: 12px; top: 10px; padding: 3px 8px; font-size: 12px; color: var(--st-fg2); background: #0009; border-radius: 4px; pointer-events: none; }
+.st-thumbs { display: flex; flex-wrap: wrap; gap: 10px; }
+.st-thumbs figure { position: relative; margin: 0; width: 240px; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 5px; background: #000; box-shadow: var(--st-shadow-media); }
+.st-thumbs video { width: 100%; height: 100%; object-fit: contain; }
+
+/* ---- steps, takes, rows ---- */
+.st-step-done span::before { content: '✓ '; color: var(--st-ok); }
+.st-step-now { background: var(--st-panel2); }
+.st-step-now span { color: var(--st-accent); }
+.st-step-now span::before { content: '● '; color: var(--st-accent); }
+.st-takes { list-style: none; margin: 0; padding: 0; }
+.st-takes li { padding: 6px 10px; border-radius: 4px; color: var(--st-fg2); }
+.st-takes li.st-take-on { background: var(--st-panel2); color: var(--st-fg); border-left: 2px solid var(--st-accent); }
+.st-draft-row, .st-seg-row { display: flex; align-items: center; gap: 8px; margin: 6px 0; }
+.st-draft-row span { flex: 1; }
+.st-seg-row select { flex: 1; min-width: 0; }
+.st-seg-row input[type='number'] { width: 70px; }
+.st-controller { display: flex; align-items: center; gap: 10px; margin: 12px 0 4px; }
+.st-record .st-btn.st-primary { background: var(--st-grad-rec); border-color: #b93b33; color: #fff; box-shadow: inset 0 1px 0 #fff4, 0 4px 14px #c9463d44; }
+.st-record.st-recording .st-btn.st-primary { animation: st-pulse 1.2s infinite; }
+
+/* ---- the lab widgets composed into the screens, dark (low specificity, so every st- class wins) ---- */
+:where(.st-root) button { font: inherit; color: var(--st-fg); background: var(--st-grad-button); border: 1px solid var(--st-line2); border-radius: var(--st-r); box-shadow: var(--st-shadow-button); padding: 4px 10px; cursor: pointer; }
+:where(.st-root) button:disabled { opacity: 0.45; cursor: default; }
+:where(.st-root) button.cl-on, :where(.st-root) button.pl-primary { background: var(--st-grad-on); }
+:where(.st-root) input:not([type='checkbox']):not([type='radio']):not([type='range']), :where(.st-root) select, :where(.st-root) textarea {
+  font: inherit; color: var(--st-fg); background: var(--st-grad-input); border: 1px solid var(--st-line2); border-radius: var(--st-r); box-shadow: var(--st-shadow-input); padding: 4px 8px; outline: none; }
+:where(.st-root) input[type='checkbox'], :where(.st-root) input[type='radio'], :where(.st-root) input[type='range'] { accent-color: var(--st-accent); }
+:where(.st-root) select option { background: var(--st-panel2); color: var(--st-fg); }
+:where(.st-root) h3, :where(.st-root) h4 { margin: 14px 0 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--st-fg3); }
+:where(.st-root) section { border-top: 0; }
+.st-root .pl-note, .st-root .cl-muted { color: var(--st-fg3); font-size: 12px; margin: 5px 0; }
+.st-root .pl-warn, .st-root .cl-warn { color: var(--st-warn); }
+.st-root .pl-busy { color: var(--st-fg2); }
+.st-root .pl-row { display: grid; gap: 4px; margin: 8px 0; color: var(--st-fg2); font-size: 12px; }
+.st-root .pl-check { display: flex; gap: 8px; align-items: center; margin: 8px 0; color: var(--st-fg2); font-size: 12px; }
+.st-root .pl-buttons, .st-root .cl-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 6px 0; }
+.st-root .pl-slider { display: grid; grid-template-columns: 92px 1fr 56px auto; align-items: center; gap: 6px; margin: 6px 0; color: var(--st-fg2); }
+.st-root .pl-unit { color: var(--st-fg3); font-size: 11px; }
+.st-root [data-testid='world-timeline'] .pl-note, .st-root [data-testid='world-timeline'] h3 { display: none; }
+.st-root .pl-slider input[type='range'], .st-root .cl-row input[type='range'] { width: 100%; }
+/* Shoot: preset camera moves (no controller needed) */
+.st-presets { display: flex; flex-direction: column; gap: 8px; margin-bottom: 4px; }
+.st-preset-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+.st-preset-grid .st-btn { padding: 5px 4px; font-size: 12px; white-space: nowrap; }
+.st-preset-grid .st-btn.st-seg-on { border-color: var(--st-accent-line); color: var(--st-fg); background: var(--st-panel2); }
+/* Render's primary press and its status line, pinned to the foot of the scrolling panel */
+.st-press-bar { position: sticky; bottom: 0; z-index: 3; margin: 0 -24px; padding: 8px 24px 10px; background: var(--st-panel); border-top: 1px solid var(--st-line); box-shadow: 0 -8px 16px #0006; }
+.st-press-bar .st-progress { margin-top: 6px; }
+.st-take-pick { all: unset; display: block; width: 100%; cursor: pointer; font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.st-take-pick:focus-visible { outline: 1px solid var(--st-accent-line); }
+/* a flagged still's Approve is secondary: dimmed until it is the confirming "Approve anyway" */
+.st-btn.st-btn-quiet { opacity: 0.7; border-style: dashed; }
+/* Shoot and Render are keyboard-operable: a visible ring on whatever Tab lands on (QA 2026-10-25 M5) */
+.st-side button:focus-visible, .st-side select:focus-visible, .st-side input:focus-visible, .st-side summary:focus-visible,
+.st-controls button:focus-visible, .st-controls select:focus-visible, .st-controls input:focus-visible, .st-controls summary:focus-visible { outline: 2px solid var(--st-blue); outline-offset: 2px; }
+.st-takes li { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; }
+.st-take-pick { flex: 1 1 0; min-width: 0; width: auto; }
+.st-take-discard { all: unset; cursor: pointer; font-size: 11px; color: var(--st-fg3); }
+.st-take-discard:hover { color: var(--st-fg); }
+/* the Clay / Look switch sits in the transport's button row (its note drops to its own line) */
+.st-root .pl-buttons > .st-clayview { display: contents; }
+.st-clayview .st-muted { margin: 4px 0 0; flex-basis: 100%; }
+.pl-buttons > .st-clayview .st-muted { margin: 0; }
+/* a take's row: play, name, on-show tag, discard */
+.st-take-play { all: unset; cursor: pointer; font-size: 12px; padding: 0 4px; color: var(--st-fg2); }
+.st-take-play:hover:not([aria-disabled='true']) { color: var(--st-fg); }
+.st-take-play[aria-disabled='true'] { opacity: 0.4; cursor: default; }
+.st-take-play:focus-visible { outline: 1px solid var(--st-accent-line); }
+.st-take-onshow { font-size: 11px; color: var(--st-accent); }

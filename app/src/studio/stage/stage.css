@@ -1,0 +1,204 @@
+/* The Stage workspace (the merge, step 2): a status line and an Arrange/Direct switch above the panel the half hosts. */
+
+.st-ws { display: flex; flex-direction: column; height: 100%; min-height: 0; background: var(--st-grad-result); }
+.st-ws-status { display: flex; flex-wrap: wrap; gap: 8px 18px; padding: 6px 24px 10px; font-size: 12px; color: var(--st-fg2);
+  background: var(--st-panel); border-bottom: 1px solid var(--st-line); }
+/* the status line's phrases are tabs (step 6a; the person card's LOOK / ADVANCED tabs are the look): each selects the thing it
+   names; the selected one is bright and underlined, the other quiet */
+.st-ws-tabs { display: flex; gap: 4px; flex-basis: 100%; border-bottom: 1px solid var(--st-line); }
+.st-ws-tabs button { background: none; border: 0; border-bottom: 2px solid transparent; border-radius: 0; box-shadow: none; margin-bottom: -1px; padding: 6px 12px 8px;
+  font: inherit; font-size: 13px; font-weight: 500; color: var(--st-fg3); cursor: pointer; }
+.st-ws-tabs button:hover { color: var(--st-fg2); }
+.st-ws-tabs button[aria-pressed="true"] { color: var(--st-fg); font-size: 14px; font-weight: 700; border-bottom-color: var(--st-accent); }
+/* the hosted panels keep their own height rules from their routes; in the column they take the remaining space */
+.st-ws .sd-set, .st-ws .st-scene { flex: 1; height: auto; min-height: 0; }
+/* a short window (F10): the upper card keeps its whole height while it can and the steps block under it gives way first, down to
+   its floor, then the card scrolls too; each scrolls on its own, with a thin visible bar and a fade at the bottom while there is
+   more below (the yellow press is kept in view by the block itself) */
+/* (shrink is shared by basis x factor: 1000 to 1 puts nearly all of it on the steps block until its floor; a factor under 1
+   would leave the rest of the overflow unshrunk) */
+.st-ws > .st-scene { flex: 1 1 auto; min-height: 120px; }
+.st-ws > .st-shot-steps { flex: 0 1000 auto; min-height: min(200px, 40%); overflow-y: auto; }
+/* the floor never props a short block open: with one Render press under it the block is just that tall, and the camera menu above gets the room */
+@supports (min-height: calc-size(min-content, size)) { .st-ws > .st-shot-steps { min-height: calc-size(min-content, min(size, 200px)); } }
+.st-ws > .st-scene, .st-ws > .st-shot-steps { scrollbar-width: thin; scrollbar-color: var(--st-line2) transparent;
+  mask-image: linear-gradient(to bottom, #000 calc(100% - var(--st-more)), transparent); animation: st-more linear both; animation-timeline: scroll(self); }
+@property --st-more { syntax: '<length>'; inherits: false; initial-value: 0px; }
+@keyframes st-more { from { --st-more: 28px; } 97% { --st-more: 28px; } to { --st-more: 0px; } }
+
+/* Arrange hosts the Set column (step 3): no panes of its own, so its side column and master board stack in the screen column,
+   scrollable over the full-size lab viewport. The Scene panel (step 6a) hosts that column in its set card: the panel scrolls,
+   the card grows with its content. */
+.st-screen-stage .sd-set { display: flex; flex-direction: column; overflow-y: auto; }
+.st-screen-stage .sd-set-main { padding-top: 0; }
+
+/* the Scene panel (step 6a): the set card and the shot card, then the scene-level rows, stacked in the screen column */
+.st-scene { overflow-y: auto; padding: 18px 18px 24px; background: var(--st-grad-panel); border-left: 1px solid var(--st-line); }
+.st-scene-card { margin: 0 0 20px; }
+.st-scene-card > h2 { margin: 0 0 10px; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--st-fg3); }
+/* the Set panel's first row: Ground, Flat | Rolling, with its one-line hint under it */
+.st-ground { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; margin: 0 0 14px; }
+.st-ground-label { font-size: 12px; color: var(--st-fg2); }
+.st-ground .st-field-hint { flex-basis: 100%; margin: 0; }
+
+/* the picked thing's name, following it over the lab viewport */
+.st-pick-tag { position: absolute; z-index: 3; transform: translate(-50%, -100%); padding: 1px 6px; border-radius: 3px;
+  background: var(--st-panel); border: 1px solid var(--st-line); font-size: 11px; color: var(--st-fg);
+  pointer-events: none; white-space: nowrap; }
+
+/* the view switch is the second level, on its own row under the tabs (step 5) */
+.st-ws-status .st-ws-views { flex-basis: 100%; }
+
+/* the floating option rail (L1, filled by L2): absolutely positioned over the viewport's left edge — it never enters the
+   panes' grid, so opening it moves and resizes nothing (a double-click on a figure depends on that) */
+.st-rail { position: absolute; left: 0; top: 0; bottom: 0; z-index: 12; width: var(--rail, 230px); overflow-y: auto;
+  background: var(--st-grad-panel); border-right: 1px solid var(--st-line); box-shadow: 6px 0 24px #0009; padding: 10px; }
+/* the rail's chrome (L2): "<name> — options", Wider (230 px ↔ 440 px), close; the cards grid flips 2 ↔ 3 columns with it */
+.st-rail-head { display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
+.st-rail-head h4 { flex: 1; margin: 0; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--st-fg3); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.st-rail-mini { background: none; border: 1px solid var(--st-line2); color: var(--st-fg2); border-radius: var(--st-r);
+  padding: 1px 7px; cursor: pointer; font: inherit; font-size: 11px; white-space: nowrap; }
+.st-rail-mini:hover { color: var(--st-fg); border-color: var(--st-fg3); }
+.st-rail-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.st-rail-cards.st-rail-cards-3 { grid-template-columns: 1fr 1fr 1fr; }
+.st-rail-card { position: relative; display: flex; flex-direction: column; gap: 4px; background: var(--st-panel);
+  border: 1px solid var(--st-line); border-radius: 7px; padding: 5px; text-align: center; cursor: pointer; font-size: 12px; }
+.st-rail-card:hover, .st-rail-card.st-rail-cur { border-color: var(--st-accent-line); }
+.st-rail-card.st-rail-off { opacity: 0.55; cursor: default; }
+.st-rail-card img { width: 100%; aspect-ratio: 3 / 4; object-fit: contain; background: #000; border-radius: 4px; display: block; }
+.st-rail-ph { display: flex; align-items: center; justify-content: center; aspect-ratio: 3 / 4; border-radius: 4px;
+  background: var(--st-grad-button); color: var(--st-fg2); font-size: 11px; padding: 2px; }
+.st-rail-name { font-size: 11px; color: var(--st-fg); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.st-rail-why { font-size: 10px; color: var(--st-fg3); }
+.st-rail-check { position: absolute; left: 6px; top: 6px; width: 18px; height: 18px; line-height: 18px; border-radius: 50%;
+  background: var(--st-accent); color: #111; font-size: 11px; font-weight: 700; }
+.st-rail-zoom { position: absolute; right: 6px; top: 6px; width: 22px; height: 22px; border-radius: 5px; background: #000a;
+  color: #fff; border: 0; cursor: pointer; opacity: 0; font-size: 13px; }
+.st-rail-card:hover .st-rail-zoom { opacity: 1; }
+/* the hover peek (L2): a 340 px floating preview beside the rail; it never takes pointer events */
+.st-peek { position: fixed; z-index: 14; width: 340px; background: var(--st-grad-panel); border: 1px solid var(--st-line);
+  border-radius: 9px; padding: 8px; box-shadow: 0 12px 40px #000a; pointer-events: none; }
+.st-peek img { width: 100%; display: block; border-radius: 6px; }
+.st-peek p { margin: 6px 2px 0; color: var(--st-fg2); font-size: 12px; }
+/* the card viewer (L2): full-size over the viewport (not the screen) — the picture left, the words and presses right */
+.st-viewer { position: absolute; inset: 0; z-index: 14; display: grid; grid-template-columns: 1fr 260px;
+  background: color-mix(in srgb, var(--st-bg) 88%, transparent); }
+.st-viewer-big { position: relative; display: flex; align-items: center; justify-content: center; padding: 14px; min-height: 0; }
+.st-viewer-big img { max-width: 100%; max-height: 100%; border-radius: 8px; box-shadow: 0 8px 40px #000; }
+.st-viewer-x { position: absolute; right: 10px; top: 10px; background: #000a; border: 0; color: #fff; border-radius: 6px;
+  padding: 4px 9px; cursor: pointer; font: inherit; }
+.st-viewer-nav { position: absolute; top: 50%; transform: translateY(-50%); background: #000a; border: 0; color: #fff;
+  width: 34px; height: 54px; font-size: 20px; cursor: pointer; border-radius: 6px; }
+.st-viewer-nav[data-testid='card-viewer-prev'] { left: 14px; }
+.st-viewer-nav[data-testid='card-viewer-next'] { right: 14px; }
+.st-viewer-info { background: var(--st-grad-panel); border-left: 1px solid var(--st-line); padding: 14px; overflow-y: auto; }
+.st-viewer-info h3 { margin: 0 0 4px; font-size: 15px; }
+.st-viewer-cap { font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; margin: 14px 0 4px; }
+.st-viewer-words { margin: 0; font-size: 13px; white-space: pre-wrap; }
+.st-viewer-cost { margin: 10px 0 0; font-size: 12px; }
+.st-viewer-strip { display: flex; gap: 6px; margin: 12px 0; flex-wrap: wrap; }
+.st-viewer-th { width: 44px; aspect-ratio: 3 / 4; border-radius: 4px; border: 2px solid transparent; cursor: pointer;
+  padding: 0; overflow: hidden; background: var(--st-grad-button); color: var(--st-fg2); font-size: 9px; }
+.st-viewer-th img { width: 100%; height: 100%; object-fit: contain; background: #000; display: block; }
+.st-viewer-th.st-viewer-th-cur { border-color: var(--st-accent-line); }
+.st-viewer-use, .st-viewer-info .st-btn { width: 100%; margin-top: 8px; }
+.st-viewer-keys { font-size: 11px; margin: 14px 0 0; }
+.st-viewer-info kbd { background: var(--st-panel); border: 1px solid var(--st-line); border-radius: 4px; padding: 0 5px; font-size: 11px; }
+/* L3: the change box under "Original prompt" on a generated card — the one-line box, the prompt that will go with the
+   warn-only checks under it, the priced redraw press and the nothing-changes-until-used line */
+.st-viewer-change textarea { width: 100%; box-sizing: border-box; resize: none; }
+.st-viewer-change .st-pricebtn, .st-viewer-change .st-runpill { margin-top: 8px; }
+.st-viewer-change .st-pricebtn > .st-btn, .st-viewer-note { width: 100%; }
+.st-viewer-note { font-size: 11px; }
+/* W3-E2: the viewport right-click menu (the mock's .ctx), beside the cursor — the person's, a piece's (the danger Remove row,
+   the rule between groups, the swap level scrolls), or the Add mark's "Add here" (a chosen Add kind hands over to Add mode and
+   shows nothing). The st-addmenu name stays: shotRelease's guard reads it. */
+.st-addmenu { position: absolute; z-index: 13; min-width: 200px; max-height: 260px; overflow-y: auto; padding: 5px;
+  background: var(--st-panel2); border: 1px solid var(--st-line2); border-radius: 10px; box-shadow: 0 14px 40px #000a; }
+.st-addmenu b { display: block; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--st-fg3);
+  padding: 6px 12px 4px; }
+.st-addmenu button { display: block; width: 100%; text-align: left; background: transparent; border: 0;
+  color: var(--st-fg); border-radius: 6px; padding: 7px 12px; cursor: pointer; font: inherit; }
+.st-addmenu button:hover, .st-addmenu button:focus-visible { background: #3b3547; outline: 0; }
+.st-addmenu button.dng { color: var(--st-bad); }
+.st-addmenu hr { border: 0; border-top: 1px solid var(--st-line); margin: 4px 2px; }
+.st-rail-new { position: absolute; left: 6px; top: 6px; background: var(--st-accent); color: #111; border-radius: 4px;
+  padding: 0 5px; font-size: 10px; font-weight: 700; }
+.st-rail-gen .st-rail-ph { border: 1px dashed var(--st-line2); }
+/* L3: the new person / new prop screen — the form over the dark space (an outside click never closes it), the how-it-works panel */
+.st-gen-big { position: relative; display: flex; align-items: flex-start; justify-content: center; padding: 40px 14px 14px; min-height: 0; overflow-y: auto; }
+.st-gen-form { width: min(620px, 100%); }
+.st-gen-form h3 { margin: 0 0 4px; font-size: 15px; }
+.st-gen-form .st-field { display: block; margin-top: 10px; }
+.st-gen-form textarea { width: 100%; box-sizing: border-box; resize: vertical; }
+.st-gen-form .st-pricebtn, .st-gen-form .st-runpill { margin-top: 14px; }
+.st-gen-form > .st-btn { width: auto; padding: 8px 18px; margin-top: 14px; margin-right: 8px; }
+.st-gen-upload { text-decoration: underline; cursor: pointer; }
+.st-gen-upload input { display: none; }
+
+/* the Top View's overlay (step 5): the walking lane and the piece labels, projected per frame through the top pane's
+   camera. A DOM layer over the canvas — it never enters the scene, so no capture ever sees it. */
+.st-top { position: absolute; z-index: 2; pointer-events: none; overflow: hidden; }
+.st-top-lane { fill: none; stroke: var(--st-fg2); stroke-width: 2; stroke-dasharray: 6 4; opacity: 0.85; }
+.st-top-label { fill: var(--st-fg); font-size: 11px; paint-order: stroke; stroke: var(--st-panel); stroke-width: 3px; }
+
+/* the draw bar (step 7, layout wave L1): the bottom transport row, a full-width line under the stage — the one-line
+   transport, the priced presses beside it, the playhead track flexing between fixed neighbours, so nothing can overlap
+   it at any width */
+.st-drawbar { display: flex; align-items: center; gap: 14px; padding: 8px 14px; background: var(--st-grad-strip);
+  border-top: 1px solid var(--st-line); }
+.st-drawbar .st-muted { margin: 0; }
+.st-drawbar-why { margin-left: auto; }
+.st-drawbar .st-warn { margin: 0; max-width: 46ch; font-size: 12px; line-height: 1.3; }
+/* the one-row transport (L1): the track is the only flexing child; the buttons and the readout keep their width */
+.st-transport { display: flex; align-items: center; gap: 8px; flex: 1 1 auto; min-width: 0; }
+.st-transport > button { padding: 6px 10px; border: 1px solid var(--st-line2); border-radius: var(--st-r);
+  background: var(--st-grad-button); color: var(--st-fg); cursor: pointer; font: inherit; white-space: nowrap; }
+.st-transport > button.st-transport-on { border-color: var(--st-accent-line); color: var(--st-fg); }
+.st-transport .st-clayview { display: contents; }
+.st-transport .st-clayview .st-muted { display: none; } /* the note stays on the full timeline, not in this row */
+.st-transport-track { flex: 1 1 auto; min-width: 40px; }
+.st-transport-time { color: var(--st-fg2); font-size: 12px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+/* the drawn looks on the Stage's set panel (QA run 5 F1) */
+.st-stage-look { margin-top: 12px; }
+.st-stage-look h3 { margin: 0 0 6px; font-size: 13px; }
+.st-stage-look-cands { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.st-stage-look .sc-cand { margin: 0; }
+.st-stage-look .sc-zoom { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; }
+.st-stage-look img { display: block; width: 100%; height: auto; border-radius: 6px; }
+.st-stage-look figcaption { display: flex; align-items: center; justify-content: space-between; gap: 6px; margin-top: 4px; font-size: 12px; }
+
+/* the sun (SetPanel): the eight arrows and Low / High on one wrapping row */
+.st-sun { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-top: 8px; }
+/* the tools' keys under the picked thing's name (G / R / S, or what the running tool does) */
+.st-tool-hint { opacity: 0.8; font-size: 11px; }
+/* the Describe-a-move form: one item per line with room between them (the piece chips, the "Do you mean" chips and Make it
+   never run into each other) */
+.st-move-form { display: flex; flex-direction: column; gap: 8px; }
+.st-move-form .bl-row { align-items: center; }
+/* the made move: Play here and Use this one together as the main row; Try another and Discard quieter, on their own row well
+   below, so a tap on Use this one never lands on Try another */
+.st-move-line { margin: 0 0 8px; }
+.st-move-primary { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.st-move-secondary { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 18px; padding-top: 12px; border-top: 1px solid var(--st-line); }
+/* the shot's steps under the right panel (ShotSteps): one yellow press at a time, a one-line cue under it */
+.st-shot-steps { display: flex; flex-direction: column; gap: 10px; margin: 0; padding: 14px 18px 16px; border-top: 1px solid var(--st-line); border-left: 1px solid var(--st-line); background: var(--st-grad-panel); }
+.st-hold { margin: 0; padding: 0; border: 0; min-width: 0; } /* holds the presses inside it while a piece builds; no box of its own */
+.st-shot-step { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+.st-shot-step p { margin: 0; }
+.st-step-cue { font-size: 12px; }
+/* Fly it yourself: one compact row under the camera moves (HandFlyRow) */
+.st-handfly { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin: 8px 0; }
+.st-handfly p { flex-basis: 100%; margin: 0; font-size: 12px; }
+/* the "how to draw" row (DrawModeRow): at the rail's narrow width nothing may clip — the switch wraps whole buttons, the cue wraps */
+.st-draw-mode { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; max-width: 100%; }
+.st-draw-mode .st-seg { flex-wrap: wrap; overflow: visible; max-width: 100%; }
+.st-draw-mode .st-seg button { white-space: normal; }
+.st-draw-mode-look { display: flex; align-items: flex-start; gap: 8px; max-width: 100%; }
+.st-draw-mode-look img { flex: 0 0 auto; border-radius: 4px; border: 1px solid var(--st-line); }
+.st-draw-mode-look p { min-width: 0; overflow-wrap: anywhere; }
+/* the "Options each time" stepper stands on its own line above the Draw press (no genline wrapper) */
+.st-shot-step > .sd-gcn { margin-left: 0; }
+.st-frame-guide { position: absolute; z-index: 3; pointer-events: none; box-sizing: border-box; border: 1px solid rgba(255,255,255,.22); }

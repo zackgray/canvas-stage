@@ -1,0 +1,41 @@
+/* The words drawer (PromptDrawer): one row under the viewport, in the viewport's own column (the stage slot's grid, screens.css),
+   so the right panel keeps its full height. Collapsed it is one line; open, the words box is a real multi-line box (about six
+   lines to start, 15px type) that grows with its words up to a third of the window, then scrolls. */
+.st-drawer { position: relative; z-index: 16; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; min-width: 0;
+  padding: 5px 12px; background: var(--st-grad-strip); border-top: 1px solid var(--st-line); }
+.st-drawer-open { align-items: flex-start; }
+.st-drawer-line { flex: 1 1 0; min-width: 0; display: flex; align-items: center; gap: 10px; margin: 0; padding: 3px 0; background: none;
+  border: 0; font: inherit; color: var(--st-fg2); text-align: left; cursor: pointer; }
+.st-drawer-label, .st-drawer-hide { flex: none; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--st-fg3); }
+.st-drawer-hide { padding: 8px 0; background: none; border: 0; font-family: inherit; cursor: pointer; }
+.st-drawer-head { flex: none; display: flex; flex-direction: column; align-items: flex-start; gap: 0; max-width: 22ch; }
+.st-drawer-head .st-drawer-hide { padding-bottom: 2px; text-align: left; }
+/* the take whose words the box holds: one short line under the label (beside it, folded), never wrapping */
+.st-drawer-take { flex: none; max-width: 22ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 12px; color: var(--st-fg3); }
+.st-drawer-note { display: block; margin: 0 0 4px; font-size: 12px; color: var(--st-fg3); }
+.st-drawer-hide:hover, .st-drawer-line:hover .st-drawer-label { color: var(--st-fg); }
+.st-drawer-text { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 13px; }
+.st-drawer-line:hover .st-drawer-text { color: var(--st-fg); }
+.st-drawer-text .sd-chip { cursor: inherit; }
+.st-drawer-edit { flex: 1 1 0; min-width: 0; max-width: 1200px; }
+/* the Board's brief box, at the drawer's size: readable type, a body that grows (BriefEditor words), the board's hint line left to the Board */
+.st-drawer .sd-card { padding: 8px 12px; border-radius: 10px; }
+.st-drawer .sd-pin { min-height: 7.5em; max-height: 34vh; font-size: 15px; line-height: 1.6; resize: vertical; }
+/* idle, the box reads as an input: a lighter fill and a clear edge (it was the strip's own colour); focused, the accent ring */
+.st-drawer .sd-card:not(:focus-within) { background: #272133; border-color: #54496b; }
+.st-drawer .sd-card:focus-within { border-color: var(--st-accent); }
+.st-drawer .sd-bm { display: none; }
+.st-drawer .sd-bbar { margin-top: 2px; }
+/* the small pop-up over selected words: Make this a character / a prop */
+.st-seltag { position: absolute; right: 12px; bottom: calc(100% + 4px); z-index: 3; display: flex; gap: 4px 10px; padding: 4px 10px;
+  background: var(--st-grad-strip); border: 1px solid var(--st-line2); border-radius: 8px; font-size: 12px; }
+.st-seltag .st-link { margin: 0; font-size: 12px; }
+/* the @ menu, the drop question and a chip's card open upward, over the viewport: there is no room below */
+.st-drawer .sd-ac, .st-drawer .sd-ask, .st-drawer .sd-pop { top: auto; bottom: calc(100% + 6px); }
+.st-drawer-redraw { flex: none; }
+.st-drawer-open .st-drawer-redraw { padding-top: 4px; }
+.st-drawer-error { flex-basis: 100%; margin: 0; }
+/* the quiet lines under the words box: the camera-language note (Tidy / Undo / dismiss) and the @ hint */
+.st-cam-note { margin: 4px 0 0; font-size: 12px; color: var(--st-fg3); }
+.st-cam-note .st-link { margin: 0 4px; font-size: 12px; }
+.st-cam-note-x { opacity: 0.7; }

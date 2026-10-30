@@ -1,0 +1,33 @@
+/* The Stage viewport's own pane polish (Track C, 2026-10-28): the split panes' frames and names, the walk's ground marks, and the
+   Camera panel's Record / Return / Lock stack. stage.css is not edited for these. */
+
+/* each pane's frame while the viewport is split (FrameGuide.tsx): a hairline edge, its name in the top-left corner (the viewfinder's
+   readouts sit lower, the arranging tip top-right, the review press bottom-left); the pane the last press landed in is lit */
+.st-pane-frame { position: absolute; z-index: 3; pointer-events: none; box-sizing: border-box; border: 1px solid rgba(255,255,255,.14); }
+.st-pane-frame-on { border-color: rgba(242,184,75,.75); }
+.st-pane-name { position: absolute; left: 8px; top: 8px; padding: 1px 7px; border-radius: 9px; background: #000a; color: #8d93a3;
+  font-size: 11px; white-space: nowrap; }
+.st-pane-frame-on .st-pane-name { color: #f2b84b; }
+/* while the Camera holds the mouse: how to let go, at the top of its frame, for as long as it is held */
+.st-pane-hold { position: absolute; z-index: 4; pointer-events: none; display: flex; justify-content: center; align-items: flex-start; }
+.st-pane-hold-tag { margin-top: 8px; padding: 2px 9px; border-radius: 9px; background: #000c; border: 1px solid rgba(242,184,75,.6); color: #f2b84b;
+  font-size: 11px; white-space: nowrap; }
+
+/* the walk to a spot (walkOverlay.ts): the line from her start along the path, and the ring on the ground at the target */
+.st-walk { position: absolute; z-index: 2; pointer-events: none; overflow: hidden; }
+.st-walk-path { fill: none; stroke: #f2b84b; stroke-width: 2; stroke-dasharray: 6 4; stroke-linecap: round; filter: drop-shadow(0 0 1px #000); }
+.st-walk-spot { fill: rgba(242,184,75,.22); stroke: #f2b84b; stroke-width: 2; filter: drop-shadow(0 0 1px #000); }
+.st-walk-start { fill: #f2b84b; stroke: #000; stroke-width: 1; }
+
+/* the Camera panel's commit stack: Record, Return to the saved camera and Lock take one under another, equal gaps, the price
+   labels in one column, one status line */
+/* Record's row ends 6 px under its button (.st-actions) and the moves 4 px under that (.st-presets): 4 px here (it collapses into
+   the moves' 4) makes Record -> Return the same 10 px as Return -> Lock take */
+.st-cam-commit { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; margin-top: 4px; }
+.st-cam-commit > *, .st-cam-commit .st-takelock > * { margin: 0; }
+.st-cam-commit .st-takelock { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+/* one button width down the stack, so Record's "Free" and Lock take's sit in one column */
+.st-cam-card [data-testid="preset-record"], .st-cam-commit .st-btn { min-width: 200px; }
+/* an action row in the Stage's panels (Walk to, Play take, the person's, piece's and prop's presses): its rule went with the old
+   Board's styles in the cleanup, which left these rows unspaced */
+.sd-act { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; min-height: 36px; }

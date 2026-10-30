@@ -1,0 +1,42 @@
+{
+ "kind": "location",
+ "id": "loc-2026-10-28T02-44-05-698",
+ "width": 1920,
+ "height": 1088,
+ "lens": {
+  "vfovDeg": 46.05098401705608,
+  "from": "known"
+ },
+ "world": {
+  "kind": "kit",
+  "eyeHeightM": 1.6,
+  "cameraPreset": "eye",
+  "horizonRow": 448,
+  "builtAt": "2026-10-28T17:49:45.555Z"
+ },
+ "result": {
+  "shot": {
+   "description": "A rain-drenched racetrack at midnight, covered in puddles on gritty asphalt reflecting the neon lights in their reflections. Overhead stadium lights pierce through a heavy downpour, reflecting off a massive puddles in the dark, dramatic night. Fog obscures details in the distance. Rainy and dark and dramatic night time with billowing thunderhead clouds and deep blue shadows. @tommy walks in pro",
+   "prompt": "A rain-drenched racetrack at midnight, covered in puddles on gritty asphalt reflecting the neon lights in their reflections. Overhead stadium lights pierce through a heavy downpour, reflecting off a massive puddles in the dark, dramatic night. Fog obscures details in the distance. Rainy and dark and dramatic night time with billowing thunderhead clouds and deep blue shadows. @tommy walks in pro"
+  }
+ },
+ "kit": {
+  "plan": "plan.json",
+  "performance": "performance.json",
+  "createdAt": "2026-10-28T02:44:05.698Z",
+  "master": {
+   "position": [
+    0,
+    1.6,
+    0
+   ],
+   "target": [
+    0,
+    1,
+    -8
+   ],
+   "focalMm": 24
+  },
+  "setChangedAt": "2026-10-28T05:30:35.247Z"
+ }
+}

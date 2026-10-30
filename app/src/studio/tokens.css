@@ -1,0 +1,39 @@
+/* Studio design tokens, from app/mockups/flow/flow.css (with the 2026-10-21 gradients). Scoped to .st-root so nothing leaks
+   into the classic UI (#/app/*) once this stylesheet has loaded. Every studio style reads these; change values here only.
+   Palette (owner decision, plan section 9.9): Comfy's near-black purple ground with ONE lime-yellow accent, spent on the
+   primary action of a screen, the lit stage and the live dot. Change --st-accent and the primary button, meter and glow follow. */
+.st-root {
+  /* surfaces and lines */
+  --st-bg: #0d0b12; --st-panel: #15121b; --st-panel2: #1c1824; --st-line: #292333; --st-line2: #372f45;
+  /* text */
+  --st-fg: #e9e7ee; --st-fg2: #a6a2b3; --st-fg3: #706b80;
+  /* signals */
+  --st-accent: #f0ff41; --st-on-accent: #14120a;
+  --st-accent-line: color-mix(in srgb, var(--st-accent) 70%, black);
+  --st-blue: #4f7fc2; --st-ok: #4fae7a; --st-warn: #e3b05a; --st-rec: #c9463d; --st-bad: #ff6b61;
+  /* shape and type */
+  --st-r: 6px; --st-h: 30px; --st-font: "Inter", "Segoe UI Variable", "Segoe UI", system-ui, sans-serif;
+  --st-bar-h: 48px; --st-controls-w: 420px; --st-side-w: 300px;
+  /* gradients (owner, 2026-10-21: surfaces must not read flat) */
+  --st-grad-bar: linear-gradient(180deg, #1d1925 0%, #15121b 100%);
+  --st-grad-panel: linear-gradient(180deg, #18141f 0%, #130f19 100%);
+  --st-grad-result: radial-gradient(120% 80% at 50% 0%, #181321 0%, #0d0b12 60%);
+  --st-grad-strip: linear-gradient(180deg, #18141f 0%, #0f0c15 100%);
+  --st-grad-input: linear-gradient(180deg, #171320 0%, #1e1a28 100%);
+  --st-grad-button: linear-gradient(180deg, #27222f 0%, #1d1925 100%);
+  --st-grad-button-hover: linear-gradient(180deg, #2f2938 0%, #231e2c 100%);
+  --st-grad-primary: linear-gradient(180deg, color-mix(in srgb, var(--st-accent) 85%, white) 0%, var(--st-accent) 100%);
+  --st-grad-primary-hover: linear-gradient(180deg, color-mix(in srgb, var(--st-accent) 70%, white) 0%, color-mix(in srgb, var(--st-accent) 90%, white) 100%);
+  --st-grad-rec: linear-gradient(180deg, #dc5a50 0%, #b93b33 100%);
+  --st-grad-on: linear-gradient(180deg, #3b3547 0%, #2e2939 100%);
+  --st-grad-cell-on: linear-gradient(180deg, #241f2e 0%, #1c1824 100%);
+  --st-grad-meter: linear-gradient(90deg, color-mix(in srgb, var(--st-accent) 70%, black), var(--st-accent));
+  /* shadows */
+  --st-shadow-input: inset 0 1px 2px #0007;
+  --st-shadow-button: inset 0 1px 0 #ffffff12, 0 1px 2px #0008;
+  --st-shadow-primary: inset 0 1px 0 #fff5, 0 1px 2px #0008, 0 4px 14px color-mix(in srgb, var(--st-accent) 22%, transparent);
+  --st-shadow-media: 0 10px 30px #0008, 0 2px 6px #0006;
+
+  background: var(--st-bg); color: var(--st-fg); font: 13px/1.45 var(--st-font);
+}
+.st-root *, .st-root *::before, .st-root *::after { box-sizing: border-box; }

@@ -1,0 +1,28 @@
+{
+  "path": [
+    [
+      0.6,
+      -12.5
+    ],
+    [
+      0.58,
+      -4.55
+    ]
+  ],
+  "pace": 0.8,
+  "castId": "soldier-mvr6itbs1",
+  "costume": "soldier",
+  "shotSeconds": 8,
+  "creatures": [
+    {
+      "kind": "dragon",
+      "action": "roar",
+      "at": [
+        0.6,
+        -34
+      ],
+      "yawDeg": 0,
+      "scale": 1.2
+    }
+  ]
+}

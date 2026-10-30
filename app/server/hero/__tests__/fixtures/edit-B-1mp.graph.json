@@ -1,0 +1,414 @@
+{
+ "m1": {
+  "class_type": "UNETLoader",
+  "inputs": {
+   "unet_name": "qwen_image_edit_2511_bf16.safetensors",
+   "weight_dtype": "default"
+  }
+ },
+ "m1l": {
+  "class_type": "LoraLoaderModelOnly",
+  "inputs": {
+   "model": [
+    "m1",
+    0
+   ],
+   "lora_name": "Qwen-Image-Edit-2511-Lightning-8steps-V1.0-fp32.safetensors",
+   "strength_model": 1
+  }
+ },
+ "m2": {
+  "class_type": "ModelSamplingAuraFlow",
+  "inputs": {
+   "model": [
+    "m1l",
+    0
+   ],
+   "shift": 3.1
+  }
+ },
+ "m3": {
+  "class_type": "CFGNorm",
+  "inputs": {
+   "model": [
+    "m2",
+    0
+   ],
+   "strength": 1
+  }
+ },
+ "m4": {
+  "class_type": "CLIPLoader",
+  "inputs": {
+   "clip_name": "qwen_2.5_vl_7b_fp8_scaled.safetensors",
+   "type": "qwen_image",
+   "device": "default"
+  }
+ },
+ "m5": {
+  "class_type": "VAELoader",
+  "inputs": {
+   "vae_name": "qwen_image_vae.safetensors"
+  }
+ },
+ "p": {
+  "class_type": "LoadImage",
+  "inputs": {
+   "image": "plate.png"
+  }
+ },
+ "p_s": {
+  "class_type": "ImageScale",
+  "inputs": {
+   "image": [
+    "p",
+    0
+   ],
+   "upscale_method": "lanczos",
+   "width": 1344,
+   "height": 768,
+   "crop": "disabled"
+  }
+ },
+ "a": {
+  "class_type": "LoadImage",
+  "inputs": {
+   "image": "A.png"
+  }
+ },
+ "a_s": {
+  "class_type": "ImageScaleToTotalPixels",
+  "inputs": {
+   "image": [
+    "a",
+    0
+   ],
+   "upscale_method": "lanczos",
+   "megapixels": 1,
+   "resolution_steps": 16
+  }
+ },
+ "f": {
+  "class_type": "LoadImage",
+  "inputs": {
+   "image": "card.png"
+  }
+ },
+ "f_s": {
+  "class_type": "ImageScaleToTotalPixels",
+  "inputs": {
+   "image": [
+    "f",
+    0
+   ],
+   "upscale_method": "lanczos",
+   "megapixels": 1,
+   "resolution_steps": 16
+  }
+ },
+ "pos": {
+  "class_type": "TextEncodeQwenImageEditPlus",
+  "inputs": {
+   "clip": [
+    "m4",
+    0
+   ],
+   "prompt": "Picture 1 is a real photograph of an empty apple orchard. Keep picture 1 exactly as it is: the same location, camera, framing and light, the same apple trees, white wooden beehive, stone wall, gate, grass, hills and low golden sun. Add one woman to it. She stands upright behind the white wooden beehive in the middle of the picture, facing the camera, arms at her sides, her head, shoulders and chest rising above the hive lid. She wears exactly the clothes, hat and veil of the woman in picture 2: the white cotton beekeeping coverall, the wide-brimmed straw hat with the pale mesh veil pushed up, the tan leather gloves and the brown boots. She has the face of the woman in picture 3. She is alone in the picture, the only person in it. Take nothing else from pictures 2 and 3: not their camera, framing or background. The tree crowns are leaves, branches and red apples only.",
+   "image1": [
+    "p_s",
+    0
+   ],
+   "image2": [
+    "a_s",
+    0
+   ],
+   "image3": [
+    "f_s",
+    0
+   ]
+  }
+ },
+ "neg": {
+  "class_type": "TextEncodeQwenImageEditPlus",
+  "inputs": {
+   "clip": [
+    "m4",
+    0
+   ],
+   "prompt": "",
+   "image1": [
+    "p_s",
+    0
+   ],
+   "image2": [
+    "a_s",
+    0
+   ],
+   "image3": [
+    "f_s",
+    0
+   ]
+  }
+ },
+ "lat": {
+  "class_type": "EmptySD3LatentImage",
+  "inputs": {
+   "width": 1344,
+   "height": 768,
+   "batch_size": 1
+  }
+ },
+ "p_l": {
+  "class_type": "VAEEncode",
+  "inputs": {
+   "pixels": [
+    "p_s",
+    0
+   ],
+   "vae": [
+    "m5",
+    0
+   ]
+  }
+ },
+ "p_rp": {
+  "class_type": "ReferenceLatent",
+  "inputs": {
+   "conditioning": [
+    "pos",
+    0
+   ],
+   "latent": [
+    "p_l",
+    0
+   ]
+  }
+ },
+ "p_rn": {
+  "class_type": "ReferenceLatent",
+  "inputs": {
+   "conditioning": [
+    "neg",
+    0
+   ],
+   "latent": [
+    "p_l",
+    0
+   ]
+  }
+ },
+ "a_l": {
+  "class_type": "VAEEncode",
+  "inputs": {
+   "pixels": [
+    "a_s",
+    0
+   ],
+   "vae": [
+    "m5",
+    0
+   ]
+  }
+ },
+ "a_rp": {
+  "class_type": "ReferenceLatent",
+  "inputs": {
+   "conditioning": [
+    "p_rp",
+    0
+   ],
+   "latent": [
+    "a_l",
+    0
+   ]
+  }
+ },
+ "a_rn": {
+  "class_type": "ReferenceLatent",
+  "inputs": {
+   "conditioning": [
+    "p_rn",
+    0
+   ],
+   "latent": [
+    "a_l",
+    0
+   ]
+  }
+ },
+ "f_l": {
+  "class_type": "VAEEncode",
+  "inputs": {
+   "pixels": [
+    "f_s",
+    0
+   ],
+   "vae": [
+    "m5",
+    0
+   ]
+  }
+ },
+ "f_rp": {
+  "class_type": "ReferenceLatent",
+  "inputs": {
+   "conditioning": [
+    "a_rp",
+    0
+   ],
+   "latent": [
+    "f_l",
+    0
+   ]
+  }
+ },
+ "f_rn": {
+  "class_type": "ReferenceLatent",
+  "inputs": {
+   "conditioning": [
+    "a_rn",
+    0
+   ],
+   "latent": [
+    "f_l",
+    0
+   ]
+  }
+ },
+ "mp": {
+  "class_type": "FluxKontextMultiReferenceLatentMethod",
+  "inputs": {
+   "conditioning": [
+    "f_rp",
+    0
+   ],
+   "reference_latents_method": "index_timestep_zero"
+  }
+ },
+ "mn": {
+  "class_type": "FluxKontextMultiReferenceLatentMethod",
+  "inputs": {
+   "conditioning": [
+    "f_rn",
+    0
+   ],
+   "reference_latents_method": "index_timestep_zero"
+  }
+ },
+ "d": {
+  "class_type": "LoadImage",
+  "inputs": {
+   "image": "depth.png"
+  }
+ },
+ "d_s": {
+  "class_type": "ImageScale",
+  "inputs": {
+   "image": [
+    "d",
+    0
+   ],
+   "upscale_method": "lanczos",
+   "width": 1344,
+   "height": 768,
+   "crop": "disabled"
+  }
+ },
+ "ucn": {
+  "class_type": "ControlNetLoader",
+  "inputs": {
+   "control_net_name": "Qwen-Image-2512-Fun-Controlnet-Union-2602.safetensors"
+  }
+ },
+ "cn": {
+  "class_type": "ControlNetApplyAdvanced",
+  "inputs": {
+   "positive": [
+    "mp",
+    0
+   ],
+   "negative": [
+    "mn",
+    0
+   ],
+   "control_net": [
+    "ucn",
+    0
+   ],
+   "image": [
+    "d_s",
+    0
+   ],
+   "strength": 0.35,
+   "start_percent": 0,
+   "end_percent": 0.4,
+   "vae": [
+    "m5",
+    0
+   ]
+  }
+ },
+ "k": {
+  "class_type": "KSampler",
+  "inputs": {
+   "model": [
+    "m3",
+    0
+   ],
+   "seed": 1082798150,
+   "steps": 8,
+   "cfg": 1,
+   "sampler_name": "euler",
+   "scheduler": "simple",
+   "positive": [
+    "cn",
+    0
+   ],
+   "negative": [
+    "cn",
+    1
+   ],
+   "latent_image": [
+    "lat",
+    0
+   ],
+   "denoise": 1
+  }
+ },
+ "v": {
+  "class_type": "VAEDecode",
+  "inputs": {
+   "samples": [
+    "k",
+    0
+   ],
+   "vae": [
+    "m5",
+    0
+   ]
+  }
+ },
+ "u": {
+  "class_type": "ImageScale",
+  "inputs": {
+   "image": [
+    "v",
+    0
+   ],
+   "upscale_method": "lanczos",
+   "width": 1920,
+   "height": 1088,
+   "crop": "disabled"
+  }
+ },
+ "o": {
+  "class_type": "SaveImage",
+  "inputs": {
+   "images": [
+    "u",
+    0
+   ],
+   "filename_prefix": "canvas-stage/r2edit-edit-B-1mp"
+  }
+ }
+}

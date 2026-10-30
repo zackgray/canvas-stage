@@ -1,0 +1,7 @@
+/* Lightbox (src/studio/ui): a full-viewport viewer over the studio */
+/* the layers, bottom to top: the stage's own overlays (12-20), the object card and the Add dialog (.st-obj-dim, 60), and this
+   viewer (70): a picture enlarged from or over a dialog always sits above it, and Escape closes it first (its capture listener) */
+.st-lightbox { position: fixed; inset: 0; z-index: 70; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; background: #000e; cursor: zoom-out; padding: 20px; box-sizing: border-box; }
+.st-lightbox > img { max-width: 100%; max-height: calc(100vh - 100px); min-height: 0; object-fit: contain; border-radius: var(--st-r); cursor: default; }
+.st-lb-bar { display: flex; align-items: center; gap: 10px; cursor: default; }
+.st-lb-cap { color: var(--st-fg2); font-size: 12px; min-width: 120px; text-align: center; }

@@ -1,0 +1,70 @@
+/* The Guided route (mockup E): stepper, mode toggle at the top, describe / upload, candidates, cast cards, live brief. */
+.sd-gd { padding: 24px 32px 60px; }
+.sd-gs { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.sd-sp2 { display: flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 99px; border: 1px solid var(--st-line); color: var(--st-fg3); font-weight: 800; cursor: pointer; font-size: 13px; background: none; }
+.sd-sp2 i { font-style: normal; width: 20px; height: 20px; border-radius: 99px; display: grid; place-items: center; background: var(--st-panel2); font-size: 11px; }
+.sd-sp2 small { font-size: 10px; font-weight: 700; color: var(--st-fg3); }
+.sd-sp2:hover { color: var(--st-fg2); }
+.sd-sp2.on { background: var(--st-grad-on); color: var(--st-fg); border-color: var(--st-line2); font-size: 15px; padding: 10px 22px; }
+.sd-sp2.on i { background: var(--st-fg); color: var(--st-bg); }
+.sd-sp2.done i { background: #2f4a1d; color: #b6e36a; }
+.sd-gm { display: flex; gap: 34px; margin-top: 26px; align-items: flex-start; }
+.sd-gc { flex: 1; min-width: 0; }
+.sd-gb { width: 290px; flex: none; position: sticky; top: 10px; background: var(--st-grad-input); border: 1px solid var(--st-line); border-radius: 18px; padding: 16px; }
+.sd-gbt { margin-top: 10px; line-height: 2; font-size: 13.5px; color: var(--st-fg2); white-space: pre-line; }
+.sd-dm { color: var(--st-fg3); font-style: italic; }
+.sd-gnote { margin-top: 12px; color: var(--st-fg3); font-size: 12px; }
+.sd-gq { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+.sd-gq h2 { margin: 0; font-size: 28px; font-weight: 800; text-transform: none; letter-spacing: 0; color: var(--st-fg); }
+
+/* a stage's own words: describe, continue; nothing is drawn here */
+.sd-mode { display: flex; align-items: center; gap: 16px; margin: 0 0 20px; }
+.sd-msub { color: var(--st-fg3); font-size: 12.5px; }
+
+.sd-gin { display: flex; gap: 18px; align-items: stretch; }
+.sd-gdes { flex: 1; min-width: 0; }
+.sd-gd textarea { width: 100%; min-height: 104px; background: var(--st-grad-input); border: 1.5px solid var(--st-line2); border-radius: 16px; color: var(--st-fg); padding: 12px 16px; font: inherit; font-size: 15px; line-height: 1.6; outline: 0; resize: vertical; }
+.sd-gd textarea:focus { border-color: #6b6385; }
+.sd-gtl { display: flex; gap: 18px; margin-top: 8px; }
+.sd-drop { width: 240px; flex: none; border: 2px dashed var(--st-line2); border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: var(--st-fg3); cursor: pointer; text-align: center; font-size: 13px; }
+.sd-drop b { color: var(--st-fg2); }
+.sd-drop small { font-size: 11px; }
+.sd-drop:hover { border-color: #6b6385; }
+.sd-gg { margin: 18px 0 16px; }
+.sd-gh { color: var(--st-fg3); font-size: 12.5px; margin: 16px 0 8px; }
+.sd-gcs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 16px; }
+.sd-gcs.f4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.sd-gcs.mini { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 2px; }
+.sd-cd { aspect-ratio: 16 / 9; width: 100%; }
+.sd-imw { position: absolute; inset: 0; }
+.sd-cd.more { display: grid; place-items: center; border: 2px dashed var(--st-line2); background: transparent; cursor: default; }
+.sd-gf { display: flex; align-items: center; gap: 18px; margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--st-line); color: var(--st-fg3); font-size: 12.5px; }
+.sd-gf .st-btn { margin-left: auto; }
+.sd-gf .st-pricebtn, .sd-gf .sd-bask { margin-left: auto; }
+.sd-gf .st-pricebtn .st-btn, .sd-gf .sd-bask .st-btn { margin-left: 0; }
+/* a candidate with its whole-picture button (the tile crops it) */
+.sd-cdw { position: relative; display: block; min-width: 0; }
+.sd-vw { position: absolute; right: 8px; bottom: 8px; width: 26px; height: 26px; border-radius: 8px; border: 1px solid #fff3; background: #000a; color: var(--st-fg); cursor: pointer; font-size: 14px; line-height: 1; }
+.sd-vw:hover { border-color: var(--st-accent); }
+
+/* cast cards */
+.sd-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.sd-cc { background: var(--st-grad-input); border: 1px solid var(--st-line); border-radius: 18px; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+.sd-cc.add { align-items: center; justify-content: center; border-style: dashed; color: var(--st-fg3); cursor: pointer; min-height: 120px; font-weight: 800; }
+.sd-cch { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.sd-cch .sd-ein { width: 150px; }
+.sd-cch .sd-rm { margin-left: auto; }
+.sd-tys { display: flex; gap: 4px; }
+.sd-cc textarea { min-height: 64px; border-radius: 12px; padding: 8px 12px; font-size: 13.5px; }
+.sd-flt { background: #120f19; border: 1px solid var(--st-line2); border-radius: 12px; padding: 8px 12px; font-size: 13.5px; line-height: 1.7; color: var(--st-fg2); min-height: 64px; }
+.sd-flact, .sd-wrow, .sd-crow { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+
+/* the generate-count stepper: beside the Generate press on a card (one compact line), or at a heading's far right */
+.sd-genline { display: inline-flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.sd-genline .sd-gcn { margin-left: 0; }
+.sd-gcn { display: inline-flex; align-items: center; gap: 8px; margin-left: auto; color: var(--st-fg3); font-size: 12.5px; font-weight: 800; }
+.sd-gcl { letter-spacing: .02em; }
+.sd-gcn b { min-width: 18px; text-align: center; color: var(--st-fg); font-variant-numeric: tabular-nums; }
+.sd-gcb { width: 26px; height: 26px; border-radius: 99px; border: 1px solid var(--st-line2); background: var(--st-panel); color: var(--st-fg2); cursor: pointer; font-size: 15px; line-height: 1; }
+.sd-gcb:hover:not(:disabled) { color: var(--st-fg); border-color: var(--st-fg3); }
+.sd-gcb:disabled { opacity: .35; cursor: default; }

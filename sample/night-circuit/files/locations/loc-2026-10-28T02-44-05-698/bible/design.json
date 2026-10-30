@@ -1,0 +1,181 @@
+{
+ "project": "sc-20261028022038-c9dp",
+ "design": {
+  "screen": "board",
+  "route": "guided",
+  "brief": "A rain-drenched racetrack at midnight, covered in puddles on gritty asphalt reflecting the neon lights in their reflections. Overhead stadium lights pierce through a heavy downpour, reflecting off a massive puddles in the dark, dramatic night. Fog obscures details in the distance.\nRainy and dark and dramatic night time with billowing thunderhead clouds and deep blue shadows.\n@tommy walks in profile to the camera through the rain toward the parked open-wheel @car.",
+  "edited": false,
+  "v2": {
+   "logline": "A rain-drenched racetrack at midnight, covered in puddles on gritty asphalt reflecting the neon lights in their reflections. Overhead stadium lights pierce through a heavy downpour, reflecting off a massive puddles in the dark, dramatic night. Fog obscures details in the distance.\nRainy and dark and dramatic night time with billowing thunderhead clouds and deep blue shadows.\n@tommy walks in profile to the camera through the rain toward the parked open-wheel @car.",
+   "place": {
+    "setting": "A rain-drenched racetrack at midnight, covered in puddles on gritty asphalt reflecting the neon lights in their reflections. Overhead stadium lights pierce through a heavy downpour, reflecting off a massive puddles in the dark, dramatic night. Fog obscures details in the distance.",
+    "period": "",
+    "season": "",
+    "time": "",
+    "weather": ""
+   },
+   "light": {
+    "key": "Rainy and dark and dramatic night time with billowing thunderhead clouds and deep blue shadows",
+    "direction": "",
+    "height": "",
+    "quality": "",
+    "colour": "",
+    "others": "",
+    "effect": ""
+   },
+   "atmosphere": [],
+   "elements": [
+    {
+     "name": "Tommy",
+     "tag": "tommy",
+     "type": "person",
+     "look": "A detailed character concept sheet for a futuristic race car driver, showcasing a high-performance racing suit crafted from matte black and crimson red leather. The central figure stands confidently in full gear including black leather boots, wearing a sleek aerodynamic helmet with a striking, highly reflective red chrome visor that completely hides their face and mirrors the dramatic track lights.",
+     "supported": true,
+     "materials": "",
+     "condition": "",
+     "face": ""
+    },
+    {
+     "name": "car",
+     "tag": "car",
+     "type": "prop",
+     "look": "A cinematic cutting-edge open-wheel race car in side view boasting a aggressive, aerodynamic chassis clad in a striking matte black and vibrant crimson red livery. Bright overhead track lights glint off the glossy red carbon fiber panels, while deep shadow plays across the sculpted black wings.",
+     "supported": true,
+     "materials": "",
+     "condition": "",
+     "face": ""
+    }
+   ],
+   "beats": [
+    {
+     "who": "@tommy",
+     "does": "walks in profile to the camera through the rain toward the parked open-wheel car",
+     "seconds": 2,
+     "visible": ""
+    }
+   ],
+   "camera": {
+    "size": "",
+    "angle": "",
+    "move": "",
+    "lensFeel": ""
+   },
+   "style": "",
+   "background": "",
+   "exclude": [],
+   "warnings": [],
+   "developed": []
+  },
+  "lighting": "Rainy and dark and dramatic night time with billowing thunderhead clouds and deep blue shadows",
+  "materials": "",
+  "action": "",
+  "pieces": [
+   {
+    "id": "pmvrif0oj4129",
+    "tag": "tommy",
+    "name": "Tommy",
+    "type": "person",
+    "looks": [
+     "/lab-assets/cast/tommy-mvrhvcpw1/draft/cand-1.png"
+    ],
+    "look": 0,
+    "state": "approved",
+    "line": "A detailed character concept sheet for a futuristic race car driver, showcasing a high-performance racing suit crafted from matte black and crimson red leather. The central figure stands confidently in full gear including black leather boots, wearing a sleek aerodynamic helmet with a striking, highly reflective red chrome visor that completely hides their face and mirrors the dramatic track lights.",
+    "onBoard": true,
+    "cardId": "tommy-mvrif0ok1",
+    "cardLook": "/lab-assets/cast/tommy-mvrhvcpw1/draft/cand-1.png"
+   },
+   {
+    "id": "pmvrif0oj4130",
+    "tag": "car",
+    "name": "car",
+    "type": "prop",
+    "looks": [
+     "/lab-assets/locations/loc-2026-10-28T02-44-05-698/bible/elements/c-20261028024116-ttsj-c-1.png"
+    ],
+    "look": 0,
+    "state": "approved",
+    "line": "A cinematic cutting-edge open-wheel race car in side view boasting a aggressive, aerodynamic chassis clad in a striking matte black and vibrant crimson red livery. Bright overhead track lights glint off the glossy red carbon fiber panels, while deep shadow plays across the sculpted black wings.",
+    "onBoard": true
+   }
+  ],
+  "phase": "board",
+  "sel": null,
+  "labels": true,
+  "panels": {
+   "brief": true,
+   "details": true
+  },
+  "spent": 43,
+  "quality": "draft",
+  "guided": {
+   "step": 4,
+   "st": {
+    "loc": {
+     "text": "A rain-drenched racetrack at midnight, covered in puddles on gritty asphalt reflecting the neon lights in their reflections. Overhead stadium lights pierce through a heavy downpour, reflecting off a massive puddles in the dark, dramatic night. Fog obscures details in the distance.",
+     "cands": [],
+     "picks": [],
+     "busy": false
+    },
+    "cast": {
+     "text": "",
+     "cands": [],
+     "picks": [],
+     "busy": false
+    },
+    "mood": {
+     "text": "Rainy and dark and dramatic night time with billowing thunderhead clouds and deep blue shadows",
+     "cands": [],
+     "picks": [],
+     "busy": false
+    },
+    "mats": {
+     "text": "",
+     "cands": [],
+     "picks": [],
+     "busy": false
+    },
+    "story": {
+     "text": "@tommy walks in profile to the camera through the rain toward the parked open-wheel car",
+     "cands": [],
+     "picks": [],
+     "busy": false
+    }
+   },
+   "cast": [
+    {
+     "id": "c1",
+     "name": "Tommy",
+     "type": "person",
+     "desc": "A detailed character concept sheet for a futuristic race car driver, showcasing a high-performance racing suit crafted from matte black and crimson red leather. The central figure stands confidently in full gear including black leather boots, wearing a sleek aerodynamic helmet with a striking, highly reflective red chrome visor that completely hides their face and mirrors the dramatic track lights.",
+     "cands": [
+      "/lab-assets/cast/tommy-mvrhvcpw1/draft/cand-1.png",
+      "/lab-assets/cast/tommy-mvrhvcpw1/draft/cand-2.png"
+     ],
+     "pick": 0,
+     "busy": false,
+     "asked": 1
+    }
+   ],
+   "props": [
+    {
+     "id": "r4",
+     "name": "car",
+     "desc": "A cinematic cutting-edge open-wheel race car in side view boasting a aggressive, aerodynamic chassis clad in a striking matte black and vibrant crimson red livery. Bright overhead track lights glint off the glossy red carbon fiber panels, while deep shadow plays across the sculpted black wings.",
+     "cands": [
+      "/lab-assets/locations/loc-2026-10-28T02-44-05-698/bible/elements/c-20261028024116-ttsj-c-1.png"
+     ],
+     "pick": 0,
+     "busy": false,
+     "asked": 1
+    }
+   ],
+   "counts": {
+    "cast": 1,
+    "props": 1
+   }
+  },
+  "v2Stale": true
+ },
+ "migratedAt": "2026-10-28T02:44:05.858Z"
+}

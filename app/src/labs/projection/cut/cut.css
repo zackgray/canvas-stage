@@ -1,0 +1,13 @@
+.cut-tl { margin: 8px 0; }
+.cut-row { display: grid; grid-template-columns: 190px 1fr; gap: 8px; align-items: center; margin: 3px 0; font-size: 11px; color: #a9aebb; }
+.cut-row-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cut-row-bar { position: relative; height: 14px; background: #181a20; border-radius: 3px; touch-action: none; }
+.cut-row-bar > i { position: absolute; top: 0; bottom: 0; border-radius: 3px; font-style: normal; text-align: center; color: #fff; line-height: 14px; }
+.cut-cutbar { height: 26px; cursor: crosshair; }
+.cut-cutbar > i { line-height: 26px; }
+.cut-handle { position: absolute; top: -3px; bottom: -3px; width: 8px; margin-left: -4px; background: #fff; border-radius: 2px; cursor: ew-resize; opacity: 0.9; }
+.cut-playhead { position: absolute; top: -4px; bottom: -4px; width: 2px; background: #ff5a4d; pointer-events: none; }
+.cut-ticks { display: flex; justify-content: space-between; font-size: 11px; color: #8d93a3; margin-left: 198px; }
+.cut-seg-row { display: grid; grid-template-columns: 24px 1fr 70px 70px 40px; gap: 6px; align-items: center; margin: 4px 0; font-size: 12px; }
+.cut-seg-row input { width: 100%; }
+.cut-preview video, .cut-out video { width: 100%; background: #000; border-radius: 3px; }

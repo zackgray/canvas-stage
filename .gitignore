@@ -1,0 +1,23 @@
+# secrets
+.env
+.env.*
+!.env.example
+
+# dependencies / builds
+node_modules/
+dist/
+.venv/
+__pycache__/
+
+# generated media and caches (keep renders out of git)
+outputs/
+renders/
+*.mp4
+*.mov
+*.safetensors
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

@@ -1,0 +1,364 @@
+{
+ "k1": {
+  "class_type": "UNETLoader",
+  "inputs": {
+   "unet_name": "flux-2-klein-4b.safetensors",
+   "weight_dtype": "default"
+  }
+ },
+ "k2": {
+  "class_type": "CLIPLoader",
+  "inputs": {
+   "clip_name": "qwen_3_4b.safetensors",
+   "type": "flux2"
+  }
+ },
+ "k3": {
+  "class_type": "VAELoader",
+  "inputs": {
+   "vae_name": "flux2-vae.safetensors"
+  }
+ },
+ "ks": {
+  "class_type": "KSamplerSelect",
+  "inputs": {
+   "sampler_name": "euler"
+  }
+ },
+ "c": {
+  "class_type": "Flux2Scheduler",
+  "inputs": {
+   "steps": 4,
+   "width": 1920,
+   "height": 1088
+  }
+ },
+ "l": {
+  "class_type": "EmptyFlux2LatentImage",
+  "inputs": {
+   "width": 1920,
+   "height": 1088,
+   "batch_size": 1
+  }
+ },
+ "n": {
+  "class_type": "CLIPTextEncode",
+  "inputs": {
+   "clip": [
+    "k2",
+    0
+   ],
+   "text": ""
+  }
+ },
+ "rw0": {
+  "class_type": "LoadImage",
+  "inputs": {
+   "image": "still0.png"
+  }
+ },
+ "rw0_s": {
+  "class_type": "ImageScaleToTotalPixels",
+  "inputs": {
+   "image": [
+    "rw0",
+    0
+   ],
+   "upscale_method": "lanczos",
+   "megapixels": 1,
+   "resolution_steps": 16
+  }
+ },
+ "rw0_l": {
+  "class_type": "VAEEncode",
+  "inputs": {
+   "pixels": [
+    "rw0_s",
+    0
+   ],
+   "vae": [
+    "k3",
+    0
+   ]
+  }
+ },
+ "rf": {
+  "class_type": "LoadImage",
+  "inputs": {
+   "image": "rf.png"
+  }
+ },
+ "rf_s": {
+  "class_type": "ImageScaleToTotalPixels",
+  "inputs": {
+   "image": [
+    "rf",
+    0
+   ],
+   "upscale_method": "lanczos",
+   "megapixels": 0.5,
+   "resolution_steps": 16
+  }
+ },
+ "rf_l": {
+  "class_type": "VAEEncode",
+  "inputs": {
+   "pixels": [
+    "rf_s",
+    0
+   ],
+   "vae": [
+    "k3",
+    0
+   ]
+  }
+ },
+ "rg": {
+  "class_type": "LoadImage",
+  "inputs": {
+   "image": "rg.png"
+  }
+ },
+ "rg_s": {
+  "class_type": "ImageScaleToTotalPixels",
+  "inputs": {
+   "image": [
+    "rg",
+    0
+   ],
+   "upscale_method": "lanczos",
+   "megapixels": 0.5,
+   "resolution_steps": 16
+  }
+ },
+ "rg_l": {
+  "class_type": "VAEEncode",
+  "inputs": {
+   "pixels": [
+    "rg_s",
+    0
+   ],
+   "vae": [
+    "k3",
+    0
+   ]
+  }
+ },
+ "rs": {
+  "class_type": "LoadImage",
+  "inputs": {
+   "image": "rs.png"
+  }
+ },
+ "rs_s": {
+  "class_type": "ImageScaleToTotalPixels",
+  "inputs": {
+   "image": [
+    "rs",
+    0
+   ],
+   "upscale_method": "lanczos",
+   "megapixels": 0.5,
+   "resolution_steps": 16
+  }
+ },
+ "rs_l": {
+  "class_type": "VAEEncode",
+  "inputs": {
+   "pixels": [
+    "rs_s",
+    0
+   ],
+   "vae": [
+    "k3",
+    0
+   ]
+  }
+ },
+ "p_still": {
+  "class_type": "CLIPTextEncode",
+  "inputs": {
+   "clip": [
+    "k2",
+    0
+   ],
+   "text": "<card prompt>"
+  }
+ },
+ "p_still_r0": {
+  "class_type": "ReferenceLatent",
+  "inputs": {
+   "conditioning": [
+    "p_still",
+    0
+   ],
+   "latent": [
+    "rw0_l",
+    0
+   ]
+  }
+ },
+ "n_still_r0": {
+  "class_type": "ReferenceLatent",
+  "inputs": {
+   "conditioning": [
+    "n",
+    0
+   ],
+   "latent": [
+    "rw0_l",
+    0
+   ]
+  }
+ },
+ "p_still_r0_r1": {
+  "class_type": "ReferenceLatent",
+  "inputs": {
+   "conditioning": [
+    "p_still_r0",
+    0
+   ],
+   "latent": [
+    "rf_l",
+    0
+   ]
+  }
+ },
+ "n_still_r1": {
+  "class_type": "ReferenceLatent",
+  "inputs": {
+   "conditioning": [
+    "n_still_r0",
+    0
+   ],
+   "latent": [
+    "rf_l",
+    0
+   ]
+  }
+ },
+ "p_still_r0_r1_r2": {
+  "class_type": "ReferenceLatent",
+  "inputs": {
+   "conditioning": [
+    "p_still_r0_r1",
+    0
+   ],
+   "latent": [
+    "rg_l",
+    0
+   ]
+  }
+ },
+ "n_still_r2": {
+  "class_type": "ReferenceLatent",
+  "inputs": {
+   "conditioning": [
+    "n_still_r1",
+    0
+   ],
+   "latent": [
+    "rg_l",
+    0
+   ]
+  }
+ },
+ "p_still_r0_r1_r2_r3": {
+  "class_type": "ReferenceLatent",
+  "inputs": {
+   "conditioning": [
+    "p_still_r0_r1_r2",
+    0
+   ],
+   "latent": [
+    "rs_l",
+    0
+   ]
+  }
+ },
+ "n_still_r3": {
+  "class_type": "ReferenceLatent",
+  "inputs": {
+   "conditioning": [
+    "n_still_r2",
+    0
+   ],
+   "latent": [
+    "rs_l",
+    0
+   ]
+  }
+ },
+ "g_still": {
+  "class_type": "CFGGuider",
+  "inputs": {
+   "model": [
+    "k1",
+    0
+   ],
+   "positive": [
+    "p_still_r0_r1_r2_r3",
+    0
+   ],
+   "negative": [
+    "n_still_r3",
+    0
+   ],
+   "cfg": 1
+  }
+ },
+ "r_still": {
+  "class_type": "RandomNoise",
+  "inputs": {
+   "noise_seed": 1
+  }
+ },
+ "x_still": {
+  "class_type": "SamplerCustomAdvanced",
+  "inputs": {
+   "noise": [
+    "r_still",
+    0
+   ],
+   "guider": [
+    "g_still",
+    0
+   ],
+   "sampler": [
+    "ks",
+    0
+   ],
+   "sigmas": [
+    "c",
+    0
+   ],
+   "latent_image": [
+    "l",
+    0
+   ]
+  }
+ },
+ "d_still": {
+  "class_type": "VAEDecode",
+  "inputs": {
+   "samples": [
+    "x_still",
+    0
+   ],
+   "vae": [
+    "k3",
+    0
+   ]
+  }
+ },
+ "o_still": {
+  "class_type": "SaveImage",
+  "inputs": {
+   "images": [
+    "d_still",
+    0
+   ],
+   "filename_prefix": "canvas-stage/hero-still"
+  }
+ }
+}

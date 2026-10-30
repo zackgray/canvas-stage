@@ -1,0 +1,352 @@
+{
+  "sentence": "A muddy medieval battlefield at dusk: broken fences, a burning palisade, spears in the mud, smoke on the horizon; a lone soldier walks toward us.",
+  "seed": 23,
+  "flat": [
+    -3,
+    -16,
+    3,
+    8
+  ],
+  "groundShade": 0.3,
+  "puddles": 45,
+  "tufts": 0,
+  "fog": {
+    "color": "#8b8f96",
+    "density": 0.018
+  },
+  "light": {
+    "fill": 1.5,
+    "key": 0.9,
+    "keyDir": [
+      140,
+      9
+    ]
+  },
+  "sky": {
+    "url": "/lab-assets/locations/loc-2026-10-23T16-13-07-001/surround-hd-4096.png",
+    "yawDeg": 90,
+    "horizonLiftDeg": 1.2,
+    "gain": 1.05,
+    "band": [
+      0.31,
+      0.9
+    ],
+    "cutDeg": 10
+  },
+  "kit": [
+    {
+      "kind": "fence",
+      "args": [
+        13,
+        3,
+        0.35
+      ],
+      "at": [
+        -17,
+        -11
+      ],
+      "yawDeg": -18
+    },
+    {
+      "kind": "fence",
+      "args": [
+        9,
+        4,
+        0.5
+      ],
+      "at": [
+        -9,
+        -4
+      ],
+      "yawDeg": -70
+    },
+    {
+      "kind": "fence",
+      "args": [
+        15,
+        5,
+        0.3
+      ],
+      "at": [
+        3.5,
+        -17
+      ],
+      "yawDeg": 8
+    },
+    {
+      "kind": "fence",
+      "args": [
+        7,
+        6,
+        0.4
+      ],
+      "at": [
+        4,
+        -2
+      ],
+      "yawDeg": 95
+    },
+    {
+      "kind": "fence",
+      "args": [
+        18,
+        7,
+        0.25
+      ],
+      "at": [
+        -30,
+        -38
+      ],
+      "yawDeg": 5
+    },
+    {
+      "kind": "fence",
+      "args": [
+        20,
+        8,
+        0.25
+      ],
+      "at": [
+        10,
+        -45
+      ],
+      "yawDeg": -6
+    },
+    {
+      "kind": "palisade",
+      "args": [
+        12,
+        2,
+        3.4
+      ],
+      "at": [
+        -16,
+        -34
+      ],
+      "yawDeg": 12
+    },
+    {
+      "kind": "fire",
+      "args": [
+        2,
+        1.6
+      ],
+      "at": [
+        -11.5,
+        -32.6
+      ]
+    },
+    {
+      "kind": "fire",
+      "args": [
+        3,
+        1.2
+      ],
+      "at": [
+        -7,
+        -31.6
+      ]
+    },
+    {
+      "kind": "debris",
+      "args": [
+        4,
+        9
+      ],
+      "at": [
+        -7.5,
+        -8.5
+      ]
+    },
+    {
+      "kind": "fire",
+      "args": [
+        5,
+        0.9
+      ],
+      "at": [
+        -7.5,
+        -8.5
+      ]
+    },
+    {
+      "kind": "cart",
+      "args": [
+        6
+      ],
+      "at": [
+        7.5,
+        -11
+      ],
+      "yawDeg": -35
+    },
+    {
+      "kind": "tent",
+      "args": [
+        7
+      ],
+      "at": [
+        16,
+        -36
+      ],
+      "yawDeg": 20
+    },
+    {
+      "kind": "tent",
+      "args": [
+        8
+      ],
+      "at": [
+        21.5,
+        -41
+      ],
+      "yawDeg": 35
+    },
+    {
+      "kind": "fire",
+      "args": [
+        9,
+        1.1
+      ],
+      "at": [
+        12,
+        -38
+      ]
+    },
+    {
+      "kind": "rock",
+      "args": [
+        10,
+        0.7
+      ],
+      "at": [
+        -3.5,
+        -6
+      ]
+    },
+    {
+      "kind": "rock",
+      "args": [
+        11,
+        0.5
+      ],
+      "at": [
+        5.2,
+        -7.5
+      ]
+    },
+    {
+      "kind": "rock",
+      "args": [
+        12,
+        1.1
+      ],
+      "at": [
+        -12,
+        -18
+      ]
+    },
+    {
+      "kind": "spear",
+      "args": [
+        13
+      ],
+      "at": [
+        -2.4,
+        -9.5
+      ]
+    },
+    {
+      "kind": "spear",
+      "args": [
+        14
+      ],
+      "at": [
+        2.6,
+        -12.5
+      ]
+    },
+    {
+      "kind": "spear",
+      "args": [
+        15
+      ],
+      "at": [
+        -5.5,
+        -14
+      ]
+    },
+    {
+      "kind": "spear",
+      "args": [
+        16
+      ],
+      "at": [
+        6.2,
+        -5.5
+      ]
+    },
+    {
+      "kind": "spear",
+      "args": [
+        17
+      ],
+      "at": [
+        -1.8,
+        -20
+      ]
+    },
+    {
+      "kind": "spear",
+      "args": [
+        18
+      ],
+      "at": [
+        9,
+        -22
+      ]
+    },
+    {
+      "kind": "banner",
+      "args": [
+        19
+      ],
+      "at": [
+        -4.2,
+        -13
+      ]
+    },
+    {
+      "kind": "banner",
+      "args": [
+        20
+      ],
+      "at": [
+        8.5,
+        -19
+      ]
+    },
+    {
+      "kind": "debris",
+      "args": [
+        21,
+        6
+      ],
+      "at": [
+        3.2,
+        -9
+      ]
+    },
+    {
+      "kind": "debris",
+      "args": [
+        22,
+        5
+      ],
+      "at": [
+        -2.5,
+        -3
+      ]
+    }
+  ]
+}

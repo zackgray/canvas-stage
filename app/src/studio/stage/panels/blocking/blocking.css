@@ -1,0 +1,37 @@
+/* Shoot's Blocking mode (track E1): a side-pane column, the top view first. Colours come from the studio tokens. */
+.bl-root { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.bl-group { display: flex; flex-direction: column; gap: 6px; padding: 8px; border-radius: var(--st-r); background: var(--st-grad-panel); }
+.bl-head { font-weight: 600; }
+.bl-row { display: flex; gap: 8px; align-items: end; flex-wrap: wrap; }
+.bl-item { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.bl-item-name { font-weight: 600; text-transform: capitalize; }
+.bl-extra { display: flex; flex-direction: column; gap: 6px; padding-top: 6px; border-top: 1px solid rgba(255, 255, 255, 0.08); }
+.bl-mini { display: inline-flex; gap: 4px; align-items: center; }
+.bl-mini .st-input, .bl-num { width: 72px; }
+.bl-x { padding-inline: 8px; }
+.bl-on { outline: 1px solid var(--st-accent); }
+.bl-warn { color: var(--st-warn); font-size: 12px; }
+.bl-error { color: var(--st-bad); margin: 0; }
+.bl-save { align-items: center; }
+/* the Describe-a-move panel (Track E) hosted inside Blocking's action row: not a modal, so it nests as a plain block on its
+   own line, without the side-panel chrome its st-scene class assumes at top level */
+.bl-describe { flex-basis: 100%; }
+.bl-describe .st-scene { padding: 0; background: none; border-left: none; overflow: visible; }
+/* the top view (copied from Perform's .pf-top) */
+.bl-top { display: block; width: 100%; max-height: 60vh; cursor: crosshair; border-radius: var(--st-r); background: #1c1d1f; }
+.bl-top-ground { fill: #2a2b2e; }
+.bl-top-flat { fill: rgba(255, 255, 255, 0.06); stroke: rgba(255, 255, 255, 0.2); stroke-width: 0.08; }
+.bl-top-piece { fill: #8a8d92; }
+.bl-top-hit { fill: var(--st-bad); }
+.bl-top-lift { stroke: #ffd278; stroke-width: 0.06; stroke-dasharray: 0.12 0.08; }
+.bl-top-camera { fill: rgba(255, 210, 120, 0.35); stroke: #ffd278; stroke-width: 0.08; }
+.bl-top-path { fill: none; stroke: var(--st-accent); stroke-width: 0.18; stroke-linejoin: round; }
+.bl-top-point { fill: var(--st-accent); }
+.bl-top-start { fill: #3fb950; }
+.bl-top-selected { fill: #fff; stroke: var(--st-accent); stroke-width: 0.15; }
+.bl-top-extra polyline { fill: none; stroke: #6cb6ff; stroke-width: 0.12; stroke-dasharray: 0.5 0.3; }
+.bl-top-extra circle { fill: #6cb6ff; }
+.bl-top-drawing polyline { stroke-width: 0.2; stroke-dasharray: none; }
+.bl-top-label { fill: #fff; font-size: 1.1px; font-weight: 600; pointer-events: none; }
+.bl-top-action { fill: #ffd278; }
+.bl-top-face { stroke: #6cb6ff; stroke-width: 0.1; stroke-dasharray: 0.2 0.2; opacity: 0.8; }

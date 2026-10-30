@@ -1,0 +1,28 @@
+/* The first-frame window over the viewport (HeroOverlay.tsx; studio tokens only): the head (Clay / Still, the close cross), then the
+   picture and, beside it, the edit box, the version strip and the presses (FrameEditDock.tsx). A narrow window stacks them. */
+.st-hero-overlay { position: absolute; inset: 0; z-index: 20; pointer-events: auto; display: flex; flex-direction: column; gap: 8px; padding: 10px 12px 12px;
+  box-sizing: border-box; background: var(--st-bg); container-type: inline-size; }
+.st-hero-overlay-head { flex: none; display: flex; gap: 12px; align-items: center; justify-content: space-between; }
+.st-hero-overlay-head p { margin: 0; }
+.st-hero-overlay-body { flex: 1 1 0; min-height: 0; display: flex; gap: 12px; }
+.st-hero-overlay-pic { flex: 1 1 0; min-width: 0; min-height: 0; display: flex; flex-direction: column; gap: 6px; }
+.st-hero-overlay-pic p { margin: 0; }
+.st-hero-overlay-img { display: block; width: 100%; flex: 1 1 0; min-height: 0; object-fit: contain; }
+.st-hero-overlay-actions { display: flex; gap: 8px; align-items: center; justify-content: center; flex-wrap: wrap; }
+.st-hero-return { position: absolute; left: 12px; bottom: 12px; z-index: 20; }
+/* the side column: the edit box and the version strip at the top, the presses at the bottom (Render clip bottom right) */
+.st-hero-overlay-edit { flex: 0 0 380px; min-width: 0; min-height: 0; display: flex; flex-direction: column; gap: 10px; background: var(--st-panel);
+  border: 1px solid var(--st-line); border-radius: var(--st-r); padding: 10px; box-sizing: border-box; }
+.st-hero-overlay-edit .st-muted { margin: 0; }
+.st-dock-top { flex: 1 1 auto; min-width: 0; min-height: 0; overflow: auto; display: flex; flex-direction: column; gap: 10px; }
+.st-hero-overlay-edit .st-dock-presses { flex: none; border-top: 1px solid var(--st-line); padding-top: 8px; }
+@container (max-width: 760px) {
+  .st-hero-overlay-body { flex-direction: column; }
+  .st-hero-overlay-edit { flex: 0 1 auto; max-height: 50%; }
+}
+.st-frame-thumb { position: relative; display: block; padding: 0; border: 0; background: none; cursor: pointer; color: inherit; }
+.st-frame-badge { position: absolute; top: 4px; right: 4px; width: 20px; height: 20px; border-radius: 50%; background: var(--st-ok); color: #fff; font-size: 13px; font-weight: 700; line-height: 20px; text-align: center; }
+.st-frame-stale { position: absolute; left: 4px; bottom: 4px; padding: 1px 6px; border-radius: 3px; background: rgba(0,0,0,.7); color: #fff; font-size: 11px; }
+/* (owner 10-29) the column holds its width however many versions the strip has (the strip scrolls); the pending window's clay is dimmed */
+.st-dock-top > * { min-width: 0; }
+.st-hero-overlay-wait { opacity: 0.55; }

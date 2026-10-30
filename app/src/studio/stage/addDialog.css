@@ -1,0 +1,33 @@
+/* The Add dialog (AddDialog.tsx): the object card's shell (panels/objectCard.css) with a grid of pick cards, and the draw screen
+   (AddGenScreen) laid out inside it instead of over the viewport. */
+.ad-body { display: flex; flex-direction: column; gap: 12px; }
+.ad-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+.ad-card { position: relative; display: flex; flex-direction: column; gap: 6px; text-align: left; padding: 8px; cursor: pointer; font: inherit;
+  color: var(--st-fg); background: var(--st-panel2); border: 1px solid var(--st-line2); border-radius: 10px; }
+.ad-card:hover:not(:disabled) { border-color: var(--st-accent); }
+.ad-card:disabled { opacity: 0.5; cursor: default; }
+.ad-card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 6px; background: #0d0b12; }
+.ad-card b { font-weight: 600; font-size: 13px; overflow-wrap: anywhere; }
+.ad-gen { border-style: dashed; justify-content: center; min-height: 64px; }
+.ad-new { position: absolute; right: 12px; top: 12px; font-size: 10px; font-style: normal; padding: 2px 7px; border-radius: 99px; background: rgba(13, 11, 18, 0.85); color: var(--st-ok); }
+.ad-body .st-viewer { position: static; display: grid; grid-template-columns: 1fr; background: none; }
+.ad-body .st-viewer-info { border-left: 0; background: none; padding: 0; }
+.ad-body .st-gen-big { padding: 0; overflow: visible; }
+.ad-body .st-viewer-x { display: none; }
+/* the draw screen's candidates (AddGenPicks.tsx): large, each with its Use this one */
+.ad-picks { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px; }
+.ad-pick { display: flex; flex-direction: column; gap: 8px; padding: 8px; background: var(--st-panel2); border: 1px solid var(--st-line2); border-radius: 10px; }
+.ad-pick img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 6px; background: #0d0b12; }
+.ad-pick-wait { justify-content: center; align-items: center; min-height: 190px; }
+.ad-pick-view { display: block; padding: 0; border: 0; background: none; cursor: zoom-in; border-radius: 6px; }
+.ad-pick-view:focus-visible { outline: 2px solid var(--st-accent); outline-offset: 2px; }
+.ad-body .ad-pick { max-width: 420px; }
+.ad-thumbs { display: flex; flex-wrap: wrap; gap: 8px; }
+.ad-thumb { width: 72px; height: 72px; padding: 0; border: 2px solid var(--st-line2); border-radius: 8px; overflow: hidden; background: #0d0b12; cursor: pointer; }
+.ad-thumb.on { border-color: var(--st-accent); }
+.ad-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ad-thumb.ad-pick-wait { width: auto; min-width: 72px; display: flex; align-items: center; padding: 0 8px; cursor: default; }
+/* (prop-advanced-same) the draw screen's DESCRIBE | ADVANCED is the person card's own tab bar, edge to edge under the header, and
+   ADVANCED takes the card's full column with the person card's spacing (its boxes are the same PromptBox) */
+.ad-body .ad-tabs { margin: -18px -22px 18px; }
+.ad-body .st-gen-form.ad-wide { width: 100%; }

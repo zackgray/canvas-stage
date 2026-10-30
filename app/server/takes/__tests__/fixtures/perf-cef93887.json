@@ -1,0 +1,49 @@
+{
+  "path": [
+    [
+      0.6,
+      -15
+    ],
+    [
+      0.6,
+      -8
+    ]
+  ],
+  "pace": 0.9,
+  "gait": "walk",
+  "castId": "brann",
+  "extras": [
+    {
+      "path": [
+        [
+          6.6,
+          -8.8
+        ],
+        [
+          -5.4,
+          -8.2
+        ]
+      ],
+      "gait": "run",
+      "delay": 0.3,
+      "costume": "plain",
+      "variant": 0
+    },
+    {
+      "path": [
+        [
+          7.6,
+          -18
+        ],
+        [
+          -6.4,
+          -17
+        ]
+      ],
+      "gait": "run",
+      "delay": 0,
+      "costume": "soldier",
+      "variant": 1
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+/* Layout-To-Render block (Render screen, left pane) */
+.st-l2r { display: flex; flex-direction: column; gap: 8px; padding-bottom: 12px; margin-bottom: 4px; border-bottom: 1px solid var(--st-line); }
+.st-l2r-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.st-l2r-inputs figure { margin: 0; display: flex; flex-direction: column; gap: 4px; }
+.st-l2r-inputs img, .st-l2r-inputs video, .st-l2r-gap { width: 100%; aspect-ratio: 1920 / 1088; object-fit: cover; border-radius: 4px; background: #000; }
+.st-l2r-gap { display: grid; place-items: center; padding: 6px; box-sizing: border-box; text-align: center; color: var(--st-fg3); font-size: 11px;
+  background: repeating-linear-gradient(45deg, #15161a 0 8px, #1a1c21 8px 16px); }
+.st-l2r-inputs figcaption { color: var(--st-fg3); font-size: 11px; }
+.st-l2r-player { display: flex; flex-direction: column; gap: 6px; }
+.st-l2r-player video { width: 100%; aspect-ratio: 1920 / 1088; background: #000; border-radius: 4px; }
+.st-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.st-chip { margin: 0; width: 96px; display: flex; flex-direction: column; gap: 3px; }
+.st-chip img, .st-chip video { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 3px; background: #000; }
+.st-chip figcaption { color: var(--st-fg3); font-size: 10px; line-height: 1.25; }
+.st-chip-ref { opacity: 0.6; }
+.st-l2r-keys, .st-l2r-prompt { display: flex; flex-direction: column; gap: 6px; }
+.st-l2r-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 12px; }
+/* a chip or the approved still opens full size in the lightbox */
+.st-chip-open, .st-l2r-open { display: block; padding: 0; border: 0; background: none; cursor: zoom-in; width: 100%; }
+/* the sheet's figcaption (absolute, pinned to its figure's bottom) is for picture sheets: here the figures are not positioned, so the captions piled up at the pane's foot over the strip (QA 2026-10-25) */
+.st-l2r-inputs figcaption, .st-chip figcaption { position: static; padding: 0; background: none; color: var(--st-fg3); }
+/* a picture that is not there says so in a chip-sized box; the panel's last block clears the sticky press bar (1024x700 QA) */
+.st-chip-gap { aspect-ratio: 16 / 9; font-size: 10px; line-height: 1.2; }
+.st-controls { scroll-padding-bottom: 96px; }
+.st-l2r { margin-bottom: 12px; }
+/* the small row buttons (Show this take, Check again, Show here / Download, a job's Recover): kept here since the old scene styles went */
+.sc-small { height: 24px; padding: 0 9px; font-size: 12px; }
+/* the words changed since the first frame (WordsChoice.tsx): the line, then the two priced presses side by side, wrapping when narrow */
+.st-words-choice { display: flex; flex-direction: column; gap: 6px; }
+.st-words-choice > p { margin: 0; }
+.st-words-choice .st-actions { margin: 0; gap: 8px; }

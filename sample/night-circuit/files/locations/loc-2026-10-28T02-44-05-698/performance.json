@@ -1,0 +1,18 @@
+{
+ "path": [
+  [
+   1.17,
+   -18.85
+  ],
+  [
+   1.3200222139260918,
+   -18.98226237306473
+  ]
+ ],
+ "pace": 0.8,
+ "gait": "walk",
+ "castId": "tommy-mvrif0ok1",
+ "costume": "modern",
+ "stand": true,
+ "shotSeconds": 6
+}

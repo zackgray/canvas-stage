@@ -1,0 +1,15 @@
+{
+  "up": [
+    -0.00388,
+    0.99972,
+    -0.02352
+  ],
+  "cameraHeightM": 2.606,
+  "inliers": 0.721,
+  "method": "floor-ransac",
+  "vfovDeg": 62.63,
+  "samples": 40000,
+  "assumedPitchDeg": 4.3,
+  "tiltFromAssumedDeg": 5.65,
+  "fitted": "2026-10-21T20:27:33Z"
+}

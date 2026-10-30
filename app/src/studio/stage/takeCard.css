@@ -1,0 +1,49 @@
+/* The take card beside the Prompt box (TakeCard.tsx), the draw press it holds (DrawPress.tsx), the "What will be sent" lines
+   (SentJobs.tsx) and the presses under the first-frame window (FrameEditDock.tsx, RenderClip.tsx). Studio tokens only. */
+.st-takecard { position: relative; flex: 0 0 auto; width: 260px; display: flex; flex-direction: column; gap: 6px; padding: 4px 0; font-size: 12px; }
+.st-takecard-empty p { margin: 6px 0; }
+.st-takecard-pics { display: flex; flex-wrap: wrap; gap: 8px; align-items: flex-start; }
+.st-takecard-pic { display: flex; flex-direction: column; gap: 3px; padding: 0; border: 0; background: none; color: var(--st-fg2); font: inherit;
+  font-size: 12px; text-align: left; text-decoration: none; cursor: pointer; }
+.st-takecard-pic img, .st-takecard-pic video { display: block; width: 112px; height: 63px; object-fit: cover; border-radius: 4px;
+  outline: 1px solid var(--st-line2); background: #000; }
+.st-takecard-pic:hover { color: var(--st-fg); }
+.st-takecard-pic:hover img, .st-takecard-pic:hover video { outline-color: var(--st-accent); }
+.st-takecard-run { flex-basis: 100%; margin: 0; }
+.st-takecard p { margin: 0; }
+.st-drawpress { display: flex; flex-direction: column; gap: 6px; }
+.st-drawpress-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; }
+.st-drawpress p { margin: 0; font-size: 12px; }
+/* the sent words: muted and small, like the person and prop cards' line */
+.st-sent { display: flex; flex-direction: column; gap: 4px; }
+.st-sent-line { margin: 0; font-size: 12px; line-height: 1.4; overflow-wrap: anywhere; }
+.st-sent-what { font-weight: 600; }
+/* folded in the card: one line that opens a pop-up over the viewport (there is no room under the card) */
+.st-sent-pop > summary { cursor: pointer; font-size: 12px; color: var(--st-fg3); list-style: none; }
+.st-sent-pop > summary::-webkit-details-marker { display: none; }
+.st-sent-pop > summary::after { content: ' ▸'; }
+.st-sent-pop[open] > summary::after { content: ' ▾'; }
+.st-sent-pop[open] > .st-sent, .st-sent-pop[open] > .st-sent-line { position: absolute; right: 0; bottom: calc(100% + 6px); z-index: 30; width: min(560px, 70vw);
+  max-height: 50vh; overflow: auto; padding: 10px 12px; background: var(--st-panel); border: 1px solid var(--st-line2); border-radius: 8px; }
+.st-hero-overlay-edit .st-sent-pop { position: relative; }
+/* in the window's column the pop-up opens leftward over the picture, so its wider box stays inside the window */
+.st-hero-overlay-edit .st-sent-pop[open] > .st-sent { left: auto; right: 0; max-height: 60vh; }
+/* the window's head: the Clay / Still switch, the close cross at the top right */
+.st-hero-overlay-head { justify-content: space-between; }
+.st-hero-overlay-close { width: 30px; height: 30px; padding: 0; font-size: 18px; line-height: 1; }
+/* the window's Render clip (the primary) at the bottom right, its sent words above it */
+.st-dock-presses { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 10px 16px; }
+.st-renderclip { flex: 1 1 280px; display: flex; flex-direction: column; align-items: flex-end; gap: 6px; text-align: right; }
+.st-renderclip .st-sent { align-self: stretch; max-height: 6.5em; overflow: auto; }
+.st-renderclip .st-sent-line { text-align: left; }
+.st-renderclip p { margin: 0; }
+/* (owner 10-29) the editable sent words: one labelled box per job, the edited line and its Reset under it */
+.st-sent-job { display: flex; flex-direction: column; gap: 3px; }
+.st-sent-box { width: 100%; box-sizing: border-box; min-height: 6em; resize: vertical; font: inherit; font-size: 12px; line-height: 1.4; color: var(--st-fg);
+  background: var(--st-bg); border: 1px solid var(--st-line2); border-radius: 6px; padding: 6px 8px; }
+.st-sent-fold > summary { cursor: pointer; font-size: 12px; color: var(--st-fg3); }
+/* the window's render: its sent words open above the press, right-aligned in the column; the version it renders beside the price */
+.st-renderclip .st-sent-pop { position: relative; align-self: stretch; text-align: left; }
+.st-renders { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--st-fg2); }
+.st-renders img { width: 48px; height: 27px; object-fit: cover; border-radius: 3px; outline: 1px solid var(--st-ok); }
+.st-renderclip-ready { font-size: 12px; color: var(--st-ok); }

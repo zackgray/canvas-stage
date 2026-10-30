@@ -1,0 +1,92 @@
+Canvas Stage
+Copyright 2026 Zachary Ahern. The code is MIT licensed (see LICENSE).
+
+This repository includes or derives from the third-party work listed below. Model weights are not
+redistributed: Comfy Cloud hosts them, or you download them yourself under each model's own licence
+(README.md, "Models and licences").
+
+----------------------------------------------------------------------
+CMU Graphics Lab Motion Capture Database
+----------------------------------------------------------------------
+
+Source:    http://mocap.cs.cmu.edu
+           BVH conversion: https://github.com/una-dinosauria/cmu-mocap
+Files:     app/public/mocap/cmu/*.bvh (seven trials; long trials cropped to the frames used,
+           see app/public/mocap/cmu/README.md)
+Terms:     see the database's own terms of use. The motion files remain under CMU's terms, not this
+           repository's MIT licence, and may not be resold as a motion pack, even in converted form.
+
+"The data used in this project was obtained from mocap.cs.cmu.edu. The database was created with
+funding from NSF EIA-0196217."
+
+----------------------------------------------------------------------
+Generated motion clips (NVIDIA Kimodo)
+----------------------------------------------------------------------
+
+Files:     app/public/mocap/kimodo/*.bvh (see app/public/mocap/kimodo/README.md for each clip's run and prompt)
+Made with: NVIDIA Kimodo. Code: Apache-2.0. Weights (Kimodo-SOMA-RP-v1): NVIDIA Open Model License (NVIDIA does not claim ownership of
+           outputs; not redistributed here). Text encoder: Meta Llama 3 8B Instruct, Built with Meta Llama 3, used under the Meta Llama 3
+           Community License.
+Skeleton:  retargeted onto CMU subject 35's skeleton; the BVH header (HIERARCHY) is 35_01's from the CMU Graphics Lab
+           Motion Capture Database (credit above).
+
+----------------------------------------------------------------------
+CMU 35_01.bvh for the motion box
+----------------------------------------------------------------------
+
+Files:     motionbox/data/35_01.bvh, CMU Graphics Lab Motion Capture Database, subject 35 trial 01 (the header the
+           motion box's retarget writes its clips in). Source and terms as the CMU entry above:
+           "The data used in this project was obtained from mocap.cs.cmu.edu. The database was created with
+           funding from NSF EIA-0196217."
+
+----------------------------------------------------------------------
+Lightricks Layout-To-Render example workflow
+----------------------------------------------------------------------
+
+The Render graph (app/server/l2r/graph.ts, snapshots app/workflows/l2r_layout-to-render*.api.json)
+was rebuilt in ComfyUI API format from Lightricks' official two-stage distilled Layout-To-Render
+workflow for LTX-2.5, at its default settings, with optional mid / end keyframe guides added and the
+inputs set by the app at submit time. The LoRA and the LTX-2.5 weights it loads are under the LTX-2.x Community License Agreement (2026-08-11,
+https://github.com/Lightricks/LTX-2/blob/main/LICENSE-2_x; a copy is in LICENSES/LTX-2-Community-License.txt)
+and are not redistributed here. This repository's graph files were modified from Lightricks' workflow
+(rebuilt in ComfyUI API format, optional mid and end keyframe guides added); they carry this notice that they
+were changed. Outputs made with them are machine-generated and are disclosed as such; the licence forbids
+removing or circumventing watermark or provenance features, and the app does not strip any. Entities with annual
+revenue of US$10M or more need a paid licence from Lightricks to use LTX-2.x for anything but non-commercial R&D.
+
+----------------------------------------------------------------------
+YuNet face detector (OpenCV Zoo), face_detection_yunet_2023mar
+----------------------------------------------------------------------
+
+Source:    https://github.com/opencv/opencv_zoo/tree/main/models/face_detection_yunet
+Licence:   MIT
+Copyright: (c) 2020 Shiqi Yu <shiqi.yu@gmail.com>
+
+Redistributed unmodified as app/scripts/clay/models/face_detection_yunet_2023mar.onnx (the full
+licence text is beside it in LICENSE-yunet.txt). It runs on your own machine, never on Comfy Cloud: the face detail pass and the face
+count that judges a drawn frame use it, and so does the clay export.
+
+----------------------------------------------------------------------
+Meta DINOv3 (conditioning for generated set pieces)
+----------------------------------------------------------------------
+
+Loaded by name through Comfy; not redistributed. DINOv3 is released under the DINOv3 License
+(https://github.com/facebookresearch/dinov3/blob/main/LICENSE.md). The NAF feature upsampler (valeoai/NAF) is Apache-2.0.
+
+----------------------------------------------------------------------
+Stage car asset
+----------------------------------------------------------------------
+
+app/public/assets/car/ was generated by this project: a Z-Image Turbo (Apache-2.0) picture lifted to a mesh with
+TripoSplat (MIT) and decimated with meshoptimizer (MIT). No third-party model file, scan or purchased asset.
+
+The other models the app uses through Comfy Cloud (Qwen, FLUX.2 Klein, LTX-2.5, Gemma 4, TRELLIS.2, BiRefNet, DINOv3, Z-Image) are listed
+in README.md, "Models and licences".
+
+----------------------------------------------------------------------
+npm dependencies (installed by npm, not stored in this repository)
+----------------------------------------------------------------------
+
+@comfyorg/sdk (MIT), three (MIT), @react-three/fiber (MIT), @react-three/drei (MIT), React (MIT),
+@sparkjsdev/spark (MIT), dualsense-ts (LGPL-3.0; used unmodified as a library). Each package's own
+licence file ships with it in node_modules.
